@@ -1,29 +1,37 @@
-:root{
+:root {
     /* Colores */
     --soft-black: #212529;
-    --just-white: #fff;    
+    --just-white: #fff;
     --grey: #bababa;
+    --soft-grey: #dddddd;
     --off-white: #faf8f7;
     --mustard: #ffc107;
+    --blue-grey: #f6f6f6;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 62.5%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
-header{
+header {
     background-color: var(--soft-black);
     width: 100%;
 }
 
-.header-container{
+hr{
+    border: none;
+    border-top: 1px solid var(--soft-grey);
+    margin: 0 10px;
+}
+
+.header-container {
     padding: 5px 0;
     width: 100%;
     display: flex;
@@ -31,16 +39,101 @@ header{
     align-items: center;
 }
 
-.header-container h2{
+.header-container h2 {
     font-weight: 600;
     color: var(--off-white);
 }
 
-.header--logo{
+.header--logo {
     width: 50px;
 }
 
-.header--logo img{
+.header--logo img {
     width: 100%;
     height: 100%;
+}
+
+.main {
+    width: 100vw;
+}
+
+.main-banner {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    filter: brightness(50%);
+}
+
+.main-container-text{
+    color: var(--just-white);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-text h1{
+    font-size: 2.6rem;
+}
+
+.main-container-text p{
+    display: none;
+}
+
+.banner-button{
+    margin-top: 16px;
+}
+
+.banner-button button{
+    font-size: 1.6rem;
+    padding: 10px 15px;
+    color: var(--just-white);
+    border: solid 1px var(--just-white);
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.2s;
+}
+
+.banner-button button:hover{
+    background-color: var(--just-white);
+    color: var(--soft-black);
+    transition: 0.2s;
+}
+
+.main-categories--slider{
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+    overflow-x: scroll;    
+}
+
+.categories--item{
+    width: 70px;
+    height: 70px;
+    margin: 0 10px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--blue-grey);
+    border-radius: 100%;    
+}
+
+.categories-hr{
+    display: none;
 }
