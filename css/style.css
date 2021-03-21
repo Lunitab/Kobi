@@ -1,12 +1,13 @@
 :root {
     /* Colores */
     --soft-black: #212529;
-    --just-white: #fff;
-    --grey: #bababa;
+    --warm-grey: #474747;
+    --grey: #717070;
     --soft-grey: #dddddd;
+    --blue-grey: #f6f6f6;
+    --just-white: #fff;
     --off-white: #faf8f7;
     --mustard: #ffc107;
-    --blue-grey: #f6f6f6;
 }
 
 * {
@@ -18,6 +19,7 @@
 html {
     font-size: 62.5%;
     font-family: "Open Sans", sans-serif;
+    scroll-behavior: smooth;
 }
 
 header {
@@ -115,8 +117,9 @@ hr{
 }
 
 .main-categories--slider{
+    width: 90%;
     display: flex;
-    margin: 20px 0;
+    margin: 20px auto;
     justify-content: space-between;
     overflow-x: scroll;    
 }
@@ -136,4 +139,65 @@ hr{
 
 .categories-hr{
     display: none;
+}
+
+.food-detail--title{
+    width: 94%;
+    margin: 0 auto;
+}
+
+.food-detail--title h2{
+    font-size: 2.4rem;
+    color: var(--soft-black);
+}
+
+.food-detail--title p{
+    font-size: 1.4rem;
+    color: var(--warm-grey);
+}
+
+.food-cards--container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.food-detail--card{
+    width: 85%;
+    min-width: 300px;
+    max-width: 350px;
+    margin: 10px;
+    border: solid 1px var(--soft-grey);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.food--card-text{
+    padding: 10px;
+}
+
+.food--card-text h3{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--soft-black);
+}
+
+.food--card-text p{
+    font-size: 1.6rem;
+    color: var(--grey);
+}
+
+
+.food-detail--card figure{
+    width: 100%;
+    height: 170px;
+}
+
+.food-detail--card figure img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
