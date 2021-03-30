@@ -158,16 +158,17 @@ hr{
 
 .food-cards--container{
     width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-auto-columns: 1fr;
 }
 
 .food-detail--card{
-    width: 85%;
+    /* width: 85%;
     min-width: 300px;
-    max-width: 350px;
-    margin: 10px;
+    max-width: 350px; */
+    /* margin: 10px; */
     border: solid 1px var(--soft-grey);
     border-radius: 10px;
     overflow: hidden;
