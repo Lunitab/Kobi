@@ -141,10 +141,10 @@ hr{
     display: none;
 }
 
-.food-detail--title{
+/* .food-detail--title{
     width: 94%;
     margin: 0 auto;
-}
+} */
 
 .food-detail--title h2{
     font-size: 2.4rem;
@@ -156,12 +156,25 @@ hr{
     color: var(--warm-grey);
 }
 
+.food--container{
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    grid-auto-columns: 1fr;
+}
+
 .food-cards--container{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px,400px));
     gap: 10px;
-    grid-auto-columns: 1fr;
+    grid-auto-columns: minmax(280px,400px);
+    grid-auto-flow: column;
+    overflow: scroll;
 }
 
 .food-detail--card{
