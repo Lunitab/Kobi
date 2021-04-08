@@ -118,16 +118,20 @@ hr{
 
 .main-categories--slider{
     width: 90%;
-    display: flex;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, 70px); */
+    /* grid-auto-columns: 70px; */
+    grid-auto-flow: column;
     margin: 20px auto;
+    gap: 20px;
     justify-content: space-between;
+    justify-items: center;
     overflow-x: scroll;    
 }
 
 .categories--item{
     width: 70px;
     height: 70px;
-    margin: 0 10px;
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -170,9 +174,8 @@ hr{
 .food-cards--container{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px,400px));
     gap: 10px;
-    grid-auto-columns: minmax(280px,400px);
+    grid-auto-columns: 280px;
     grid-auto-flow: column;
     overflow: scroll;
 }
