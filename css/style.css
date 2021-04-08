@@ -22,7 +22,7 @@ html {
     scroll-behavior: smooth;
 }
 
-header {
+header, footer {
     background-color: var(--soft-black);
     width: 100%;
 }
@@ -33,7 +33,7 @@ hr{
     margin: 0 10px;
 }
 
-.header-container {
+.header-container, .footer-container {
     padding: 5px 0;
     width: 100%;
     display: flex;
@@ -41,16 +41,16 @@ hr{
     align-items: center;
 }
 
-.header-container h2 {
+.header-container h2, .footer-container h2 {
     font-weight: 600;
     color: var(--off-white);
 }
 
-.header--logo {
+.header--logo, .footer--logo {
     width: 50px;
 }
 
-.header--logo img {
+.header--logo img, .footer--logo img {
     width: 100%;
     height: 100%;
 }
