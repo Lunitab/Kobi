@@ -7,7 +7,7 @@
     --blue-grey: #f6f6f6;
     --just-white: #fff;
     --off-white: #faf8f7;
-    --mustard: #ffc107;
+    --mustard: #ff8b24;
 }
 
 * {
@@ -99,7 +99,8 @@ hr{
     margin-top: 16px;
 }
 
-.banner-button button{
+.banner-button a{
+    text-decoration: none;
     font-size: 1.6rem;
     padding: 10px 15px;
     color: var(--just-white);
@@ -110,7 +111,7 @@ hr{
     transition: 0.2s;
 }
 
-.banner-button button:hover{
+.banner-button a:hover{
     background-color: var(--just-white);
     color: var(--soft-black);
     transition: 0.2s;
