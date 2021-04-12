@@ -19,7 +19,7 @@ $etiquetas = "SELECT * FROM etiquetas;";
     <body>
         <header>
             <div class="header-container">
-                <a href="./index.html" class="header--logo">
+                <a href="./index.php" class="header--logo">
                     <img src="./assets/img/logo1.png" alt="" />
                 </a>
                 <h2>¿Qué vamos a comer hoy?</h2>
@@ -32,13 +32,17 @@ $etiquetas = "SELECT * FROM etiquetas;";
                 <img class="banner-background" src="./assets/img/food1.jpg" alt="imagen burrito" />
                 <div class="main-container-text">
                     <h1>Kobi</h1>
-                    <p>
+                    <p class="banner-info">
                         El sazón del paladar te permite vender variedad de alimentos distintos dentro de las instalaciones donde te encuentres, para tener un manejo completo de tus pedidos, quien
                         quiere comprar y mostrar lo que tienes que ofrecer.
                     </p>
 
                     <div class="banner-button">
                         <a class="button" href="./register.html">Quiero ser vendedor</a>
+                    </div>
+
+                    <div class="banner-login">
+                        <p>¿Ya eres vendedor?</p> <a href="./login.html">Inicia sesión</a>
                     </div>
                 </div>
             </section>

@@ -15,7 +15,7 @@
     <body>
         <header>
             <div class="header-container">
-                <a href="./index.html" class="header--logo">
+                <a href="./index.php" class="header--logo">
                     <img src="./assets/img/logo1.png" alt="" />
                 </a>
                 <h2>¿Qué vamos a comer hoy?</h2>
@@ -23,18 +23,22 @@
         </header>
 
         <main>
+            <img src="./assets/img/food1.jpg" alt="bg-image">
             <section class="main">
                 <h1 class="main-title">Registrate</h1>
                 <section class="main-login">
                     <span class="main-login-text">Registra tus datos</span>
                     <form action="" method="POST" class="main-login-form">
                         <label for="datos" class="datos">
-                            <input type="email" class="email-input" placeholder="Email" required />
-                            <input type="password" class="pass-input" placeholder="Contraseña" required />
+                            <input name="name" type="text" placeholder="Nombre" required />
+                            <input name="nickname" type="text" placeholder="Apodo" required />
+                            <input name="email" type="email" placeholder="Email" required />
+                            <input name="password" type="password" placeholder="Contraseña" required />
+                            <input name="password-repeat" type="password" placeholder="Repite tu contraseña" required />
                         </label>
 
                         <label for="botones" for="botones" class="boton">
-                            <input type="submit" class="submit" value="Ingresar" />
+                            <input type="submit" class="submit" value="Registrarme" />
                         </label>
                     </form>
                 </section>

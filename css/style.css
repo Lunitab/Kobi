@@ -91,7 +91,7 @@ hr{
     font-size: 2.6rem;
 }
 
-.main-container-text p{
+.main-container-text .banner-info{
     display: none;
 }
 
@@ -115,6 +115,27 @@ hr{
     background-color: var(--just-white);
     color: var(--soft-black);
     transition: 0.2s;
+}
+
+.banner-login{
+    display: inherit;
+    margin-top: 16px;
+    font-size: 1.6rem;
+}
+
+.banner-login p{
+    margin-left: 10px;
+}
+
+.banner-login a{
+    margin-left: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--just-white);
+}
+
+.banner-login a:hover{
+    color: var(--mustard);
 }
 
 .main-categories--slider{
