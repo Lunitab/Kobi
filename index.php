@@ -42,7 +42,7 @@ $etiquetas = "SELECT * FROM etiquetas;";
                     </div>
 
                     <div class="banner-login">
-                        <p>¿Ya eres vendedor?</p> <a href="./login.html">Inicia sesión</a>
+                        <p>¿Ya eres vendedor?</p> <a href="./login.php">Inicia sesión</a>
                     </div>
                 </div>
             </section>
