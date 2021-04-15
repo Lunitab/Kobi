@@ -38,7 +38,7 @@ $etiquetas = "SELECT * FROM etiquetas;";
                     </p>
 
                     <div class="banner-button">
-                        <a class="button" href="./register.html">Quiero ser vendedor</a>
+                        <a class="button" href="./register.php">Quiero ser vendedor</a>
                     </div>
 
                     <div class="banner-login">

@@ -79,7 +79,7 @@ include("./php/cn.php");
                 </script>";
         } else {
             echo "<script>
-                swal('Error', 'datos no válidos', 'error')
+                swal('Error', 'Datos no válidos', 'error')
                 const boton = document.querySelector('.swal-button')
                 boton.addEventListener('click',()=>{
                     window.location = './login.php'
