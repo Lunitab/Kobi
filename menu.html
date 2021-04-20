@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/crud.css" />
+        <title>Kobi</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-container">
+                <a href="./index.php" class="header--logo">
+                    <img src="./assets/img/logo1.png" alt="" />
+                </a>
+                <h2>¿Qué vamos a comer hoy?</h2>
+            </div>
+        </header>
+
+        <main>
+            <section class="main-table-container">
+                <div class="main-table">
+                    <div class="main-table--header">
+                        <!-- php -->
+                        <h2>Menu Name</h2>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="nombre-alimento">Alimento</th>
+                                <th class="precio-alimento">Precio</th>
+                                <th class="descripcion-alimento">Descripción</th>
+                                <th class="estado-alimento">Estado</th>
+                                <!-- <th>Imagen</th> -->
+                                <th class="acciones-alimento">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- PHP -->
+                            <tr>
+                                <td class="nombre-alimento">nombre_alimento</td>
+                                <td class="precio-alimento">precio_alimento</td>
+                                <td class="descripcion-alimento">desc_alimento</td>
+                                <td class="estado-alimento">estatus_alimento</td>
+                                <td class="acciones-alimento">
+                                    <a href="">Editar</a>
+                                    <a href="">Eliminar</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="nombre-alimento">nombre_alimento</td>
+                                <td class="precio-alimento">precio_alimento</td>
+                                <td class="descripcion-alimento">desc_alimento</td>
+                                <td class="estado-alimento">estatus_alimento</td>
+                                <td class="acciones-alimento">
+                                    <a href="">Editar</a>
+                                    <a href="">Eliminar</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="nombre-alimento">nombre_alimento</td>
+                                <td class="precio-alimento">precio_alimento</td>
+                                <td class="descripcion-alimento">desc_alimento</td>
+                                <td class="estado-alimento">estatus_alimento</td>
+                                <td class="acciones-alimento">
+                                    <a href="">Editar</a>
+                                    <a href="">Eliminar</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="nombre-alimento">nombre_alimento</td>
+                                <td class="precio-alimento">precio_alimento</td>
+                                <td class="descripcion-alimento">desc_alimento</td>
+                                <td class="estado-alimento">estatus_alimento</td>
+                                <td class="acciones-alimento">
+                                    <a href="">Editar</a>
+                                    <a href="">Eliminar</a>
+                                </td>
+                            </tr>
+                            <!-- /PHP -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <a href="#" class="footer--logo">
+                    <img src="./assets/img/logo1.png" alt="" />
+                </a>
+                <h2>Kobi</h2>
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </body>
+</html>

@@ -75,7 +75,7 @@ include("./php/cn.php");
 
         if ($resultado && mysqli_num_rows($resultado)!=0) {
             echo "<script>
-                window.location = './index.php' 
+                window.location = './menu.php' 
                 </script>";
         } else {
             echo "<script>
