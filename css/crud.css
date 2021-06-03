@@ -1,0 +1,110 @@
+:root {
+    /* Colores */
+    --soft-black: #212529;
+    --warm-grey: #474747;
+    --grey: #717070;
+    --soft-grey: #dddddd;
+    --blue-grey: #f6f6f6;
+    --just-white: #fff;
+    --off-white: #faf8f7;
+    --mustard: #ff8b24;
+}
+
+main {
+    width: 100%;
+    min-height: 88vh;
+    background-image: linear-gradient(to top, #ff8b24, #ff7940, #ff6957, #f55e6b, #e6587c, #d95785, #cb578d, #bb5893, #ae5996, #a15a98, #935b98, #865b97);}
+
+main .main-table-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-table {
+    min-width: 300px;
+    width: 90%;
+    max-width: 1900px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2)  ; 
+	-webkit-box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2)  ; 
+	-moz-box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2)  ; 
+    border-radius: 10px;
+}
+
+.main-table .main-table--header {
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    background-color: var(--mustard);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.main-table .main-table--header h2 {
+    font-size: 2.4rem;
+    color: var(--just-white);
+}
+
+.main-table table {
+    width: 100%;
+    display: grid;
+    overflow-x: scroll;
+}
+
+.main-table table .descripcion-alimento {
+    width: 250px;
+}
+
+.main-table table .nombre-alimento {
+    width: 100px;
+}
+
+.main-table table .precio-alimento {
+    width: 50px;
+}
+
+.main-table table .estado-alimento {
+    width: 70px;
+}
+
+.main-table table .acciones-alimento {
+    width: 100px;
+}
+
+.main-table table td {
+    word-wrap: break-word;
+}
+
+.main-table table tr {
+    /* display: grid;
+    grid-template-columns: repeat(5,minmax(100px,1fr));
+    justify-items: center;
+    gap: 15px; */
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+table {
+    border: 1px solid var(--soft-grey);
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0px 0px 10px 10px;
+}
+
+tr {
+    border-bottom: 1px solid var(--soft-grey);
+    background-color: var(--blue-grey);
+}
+
+tr a{
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
