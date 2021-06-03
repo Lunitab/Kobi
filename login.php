@@ -70,12 +70,14 @@ include("./php/cn.php");
         $email = $_POST["email"];
         $password = $_POST["password"];
 
+        $id = mysqli_query($con, "SELECT id FROM vendedores WHERE email='$email'")->fetch_object()->id;
+
         $validar = "SELECT * FROM vendedores WHERE email = '$email' AND password='$password'";
         $resultado = mysqli_query($con, $validar);
 
         if ($resultado && mysqli_num_rows($resultado)!=0) {
             echo "<script>
-                window.location = './menu.php' 
+                window.location = './menu.php?id=$id' 
                 </script>";
         } else {
             echo "<script>

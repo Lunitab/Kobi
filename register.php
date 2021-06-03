@@ -42,6 +42,7 @@ include("./php/cn.php");
                         <input name="nickname" type="text" placeholder="Apodo" required />
                         <input name="menu" type="text" placeholder="Nombre de tu tienda" required />
                         <input name="email" type="email" placeholder="Email" required />
+                        <input name="telefono" type="tel" placeholder="Teléfono" required />
                         <input name="password" id="password" type="password" placeholder="Contraseña" required />
                         <input name="password-repeat" id="confirm_password" type="password" placeholder="Repite tu contraseña" required />
                     </label>
@@ -85,14 +86,15 @@ include("./php/cn.php");
 
 <?php
 
-if (isset($_POST["name"]) && isset($_POST["nickname"]) && isset($_POST["menu"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["name"]) && isset($_POST["nickname"]) && isset($_POST["menu"]) && isset($_POST["email"]) && isset($_POST["telefono"]) && isset($_POST["password"])) {
     $nombre = $_POST["name"];
     $nickname = $_POST["nickname"];
     $nombre_menu = $_POST["menu"];
     $email = $_POST["email"];
+    $telefono = $_POST["telefono"];
     $password = $_POST["password"];
 
-    $registrarVendedor = "INSERT INTO vendedores(login, password, nickname, email) VALUES ('$nombre', '$password', '$nickname', '$email')";
+    $registrarVendedor = "INSERT INTO vendedores(login, password, nickname, email, telefono) VALUES ('$nombre', '$password', '$nickname', '$email', '$telefono')";
 
     $resultado = mysqli_query($con, $registrarVendedor);
 
