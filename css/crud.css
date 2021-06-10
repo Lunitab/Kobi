@@ -28,7 +28,7 @@ main .main-table-container {
     min-width: 300px;
     width: 90%;
     max-width: 1900px;
-    margin-top: 20px;
+    margin: 15px 0;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2)  ; 
 	-webkit-box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2)  ; 
 	-moz-box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2)  ; 
@@ -72,6 +72,8 @@ main .main-table-container {
 
 .main-table table .acciones-alimento {
     width: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-table table td {
@@ -106,5 +108,54 @@ tr {
 tr a{
     text-decoration: none;
     font-weight: bold;
-    margin-left: 5px;
+    margin: 5px 0;
+    padding: 3px;
+    border-radius: 5px;
+    color: var(--soft-black);
+    user-select: none;
+}
+
+tr a:hover{
+    color: var(--off-white);
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+a.edit{
+    background-color: var(--mustard);
+    margin-bottom: 0;
+}
+
+a.delete{
+    background-color: #F96164;
+}
+
+main .main-header{
+    width: 90%;
+    margin: auto;
+    padding-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-header .btn-new{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--just-white);
+    font-size: 1.4rem;
+    padding: 8px 40px;
+    border-radius: 5px;
+    background-color: #00b95d;
+    transition: background-color 0.2s;
+}
+
+.btn-new:hover{
+    background-color: #008D2F;
+    transition: 0.3s;
+}
+
+@media (min-width: 768px){
+    .main-table table {
+        overflow: hidden;
+    }
 }

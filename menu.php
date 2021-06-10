@@ -36,6 +36,12 @@ $alimentos = "SELECT * FROM alimentos WHERE menu_id = $menuId";
 
     <main>
 
+        <section class="main-header">
+            <a href="./newfood.php?id=<?php echo $menuId; ?>&vendedor=<?php echo $id; ?>" class="btn-new">
+                Nuevo
+            </a>
+        </section>
+
 
         <section class="main-table-container">
             <div class="main-table">
@@ -51,7 +57,6 @@ $alimentos = "SELECT * FROM alimentos WHERE menu_id = $menuId";
                             <th class="precio-alimento">Precio</th>
                             <th class="descripcion-alimento">Descripción</th>
                             <th class="estado-alimento">Estado</th>
-                            <!-- <th>Imagen</th> -->
                             <th class="acciones-alimento">Acciones</th>
                         </tr>
                     </thead>
@@ -68,16 +73,16 @@ $alimentos = "SELECT * FROM alimentos WHERE menu_id = $menuId";
                                 <td class="descripcion-alimento"><?php echo $row["descripcion"]; ?></td>
                                 <td class="estado-alimento"><?php echo $row["estatus"]; ?></td>
                                 <td class="acciones-alimento">
-                                    <a href="">Editar</a>
-                                    <a href="">Eliminar</a>
+                                    <a class="edit" href="./editfood.php?id=<?php echo $row["id"]; ?>&imagen=<?php echo $row["imagen"]; ?>&menuid=<?php echo $menuId; ?>&vendedor=<?php echo $id; ?>&nombre=<?php echo $row["nombre"]; ?>&precio=<?php echo $row["precio"]; ?>&desc=<?php echo $row["descripcion"]; ?>">Editar</a>
+                                    <a class="delete delete-btn" data-id="<?php echo $row["id"]; ?>" data-menu="<?php echo $id; ?>" href="./deletefood.php">Eliminar</a>
                                 </td>
                             </tr>
                         <?php
                         }
                         mysqli_free_result($resultadoQuery);
-                        ?>                        
+                        ?>
                         <!-- /PHP -->
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -94,6 +99,32 @@ $alimentos = "SELECT * FROM alimentos WHERE menu_id = $menuId";
     </footer>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+
+
+        function confirmar(element) {
+            element.preventDefault()
+
+            const id = this.getAttribute('data-id')
+            const menuid = this.getAttribute('data-menu')
+
+            swal('¿Esta seguro de eliminar el alimento?', 'No se podrá recuperar', 'warning')
+
+            const boton = document.querySelector('.swal-button')
+            boton.addEventListener('click', () => {
+                window.location = `./deletefood.php?id=${id}&menu=${menuid}`
+            })
+        }
+
+        let $delete = document.querySelectorAll('.delete-btn')
+
+
+        for (let i = 0; i < $delete.length; i++) {
+            $delete[i].addEventListener('click', confirmar)
+        }
+    </script>
+
 </body>
 
 </html>

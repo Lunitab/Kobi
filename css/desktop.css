@@ -1,0 +1,43 @@
+.main-categories--slider {
+    overflow: auto;
+}
+
+.main-container-text {
+    align-items: flex-end;
+    padding: 0 200px;
+}
+
+.main-container-text .banner-info {
+    display: block;
+    width: 400px;
+    text-align: right;
+    font-size: 1.6rem;
+}
+
+.food-cards--container {
+    overflow: auto;
+    padding-bottom: 8px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    margin: 10px;
+    height: 10px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(204, 204, 204);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(155, 155, 155);
+}
