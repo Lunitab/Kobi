@@ -16,6 +16,12 @@ include("./php/cn.php");
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/form.css" />
     <title>Kobi</title>
+
+    <style>
+        body {
+            height: 88vh;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,12 +35,12 @@ include("./php/cn.php");
     </header>
 
     <main>
-        <img src="./assets/img/food1.jpg" alt="bg-image">
+        <img src="./assets/img/food1.jpg" class="bg-img" alt="bg-image">
         <section class="main">
             <h1 class="main-title">Login</h1>
             <section class="main-login">
                 <span class="main-login-text">Ingresa para iniciar tu sesión</span>
-                
+
                 <form action="#" method="POST" class="main-login-form">
                     <label for="datos" class="datos">
                         <input type="email" name="email" class="email-input" placeholder="Email" required />
@@ -75,7 +81,7 @@ include("./php/cn.php");
         $validar = "SELECT * FROM vendedores WHERE email = '$email' AND password='$password'";
         $resultado = mysqli_query($con, $validar);
 
-        if ($resultado && mysqli_num_rows($resultado)!=0) {
+        if ($resultado && mysqli_num_rows($resultado) != 0) {
             echo "<script>
                 window.location = './menu.php?id=$id' 
                 </script>";

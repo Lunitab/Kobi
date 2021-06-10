@@ -31,12 +31,12 @@ include("./php/cn.php");
     </header>
 
     <main>
-        <img src="./assets/img/food1.jpg" alt="bg-image">
+        <img class="bg-img" src="./assets/img/food1.jpg" alt="bg-image">
         <section class="main">
             <h1 class="main-title">Registrate</h1>
             <section class="main-login">
                 <span class="main-login-text">Registra tus datos</span>
-                <form action="#" method="POST" class="main-login-form">
+                <form action="#" method="POST" enctype="multipart/form-data" class="main-login-form">
                     <label for="datos" class="datos">
                         <input name="name" type="text" placeholder="Nombre" required />
                         <input name="nickname" type="text" placeholder="Apodo" required />
@@ -45,6 +45,16 @@ include("./php/cn.php");
                         <input name="telefono" type="tel" placeholder="Teléfono" required />
                         <input name="password" id="password" type="password" placeholder="Contraseña" required />
                         <input name="password-repeat" id="confirm_password" type="password" placeholder="Repite tu contraseña" required />
+                    </label>
+
+                    <label for="ImageFile">
+                        <div class="custom-file">
+                            <label class="image-label" for="ImageFile">Imagen de tu negocio</label>
+                            <figure>
+                                <img id="foodImage" src="./assets/img/noAvailable.png" alt="" width="100%" />
+                            </figure>
+                            <input name="imagen" type="file" class="file-input btn" id="ImageFile" required />
+                        </div>
                     </label>
 
                     <label for="botones" for="botones" class="boton">
@@ -66,6 +76,20 @@ include("./php/cn.php");
 </body>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- Script para previsualizar imagen -->
+<script>
+    const $inputImage = document.getElementById('ImageFile')
+    const $image = document.getElementById('foodImage')
+
+    $inputImage.addEventListener("change", function() {
+        console.log(this.files);
+        var files = this.files;
+        var imgCodified = URL.createObjectURL(files[0]);
+
+        $image.setAttribute("src", imgCodified)
+    });
+</script>
 
 
 <script>
@@ -93,16 +117,27 @@ if (isset($_POST["name"]) && isset($_POST["nickname"]) && isset($_POST["menu"]) 
     $email = $_POST["email"];
     $telefono = $_POST["telefono"];
     $password = $_POST["password"];
+    $img = $_FILES["imagen"]['name'];
+
+    // Url que se guarda en la BD
+    $imgURL = "assets/img/img_menus/$img";
+
+    // Ruta para guardar la imagen
+    $target_Path = "./assets/img/img_menus/";
+
+    // Codigo para subir la imagen
+    $target_Path = $target_Path . basename( $img );
+    move_uploaded_file($_FILES['imagen']['tmp_name'], $target_Path);
 
     $registrarVendedor = "INSERT INTO vendedores(login, password, nickname, email, telefono) VALUES ('$nombre', '$password', '$nickname', '$email', '$telefono')";
 
     $resultado = mysqli_query($con, $registrarVendedor);
 
-    if($resultado){
+    if ($resultado) {
 
         $idVendedor = mysqli_query($con, "SELECT id FROM vendedores WHERE email='$email'")->fetch_object()->id;
 
-        $registrarMenu = "INSERT INTO menus(nombre, vendedor_id) VALUES ('$nombre_menu', '$idVendedor')";
+        $registrarMenu = "INSERT INTO menus(nombre, vendedor_id, imagen) VALUES ('$nombre_menu', '$idVendedor', '$imgURL')";
 
         $resultadoMenu = mysqli_query($con, $registrarMenu);
 
@@ -113,7 +148,6 @@ if (isset($_POST["name"]) && isset($_POST["nickname"]) && isset($_POST["menu"]) 
             window.location = './login.php';
         })        
         </script>";
-
     } else {
         echo "<script>
         swal('Error', 'No se pudo registrar. Comprueba que el correo no este en uso', 'error')
@@ -123,9 +157,6 @@ if (isset($_POST["name"]) && isset($_POST["nickname"]) && isset($_POST["menu"]) 
         })
         </script>";
     }
-
-
-    
 }
 
 
