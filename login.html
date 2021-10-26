@@ -1,20 +1,20 @@
-<?php
-include("./php/cn.php");
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+    <!-- Metas -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/form.css" />
+    <!-- Page -->
+    <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
     <title>Kobi</title>
 
     <style>
@@ -27,7 +27,7 @@ include("./php/cn.php");
 <body>
     <header>
         <div class="header-container">
-            <a href="./index.php" class="header--logo">
+            <a href="./index.html" class="header--logo">
                 <img src="./assets/img/logo1.png" alt="" />
             </a>
             <h2>¿Qué vamos a comer hoy?</h2>
@@ -41,7 +41,7 @@ include("./php/cn.php");
             <section class="main-login">
                 <span class="main-login-text">Ingresa para iniciar tu sesión</span>
 
-                <form action="#" method="POST" class="main-login-form">
+                <form action="./menu.html" method="POST" class="main-login-form">
                     <label for="datos" class="datos">
                         <input type="email" name="email" class="email-input" placeholder="Email" required />
 
@@ -69,34 +69,6 @@ include("./php/cn.php");
     </footer>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <?php
-    if (isset($_POST["email"]) && isset($_POST["password"])) {
-
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $id = mysqli_query($con, "SELECT id FROM vendedores WHERE email='$email'")->fetch_object()->id;
-
-        $validar = "SELECT * FROM vendedores WHERE email = '$email' AND password='$password'";
-        $resultado = mysqli_query($con, $validar);
-
-        if ($resultado && mysqli_num_rows($resultado) != 0) {
-            echo "<script>
-                window.location = './menu.php?id=$id' 
-                </script>";
-        } else {
-            echo "<script>
-                swal('Error', 'Datos no válidos', 'error')
-                const boton = document.querySelector('.swal-button')
-                boton.addEventListener('click',()=>{
-                    window.location = './login.php'
-                })
-                </script>";
-        }
-    }
-
-    ?>
 
 </body>
 
