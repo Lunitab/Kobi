@@ -10,6 +10,10 @@
     --mustard: #ff8b24;
 }
 
+.d-none {
+    display: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -22,18 +26,20 @@ html {
     scroll-behavior: smooth;
 }
 
-header, footer {
+header,
+footer {
     background-color: var(--soft-black);
     width: 100%;
 }
 
-hr{
+hr {
     border: none;
     border-top: 1px solid var(--soft-grey);
     margin: 0 10px;
 }
 
-.header-container, .footer-container {
+.header-container,
+.footer-container {
     padding: 5px 0;
     width: 100%;
     display: flex;
@@ -41,16 +47,19 @@ hr{
     align-items: center;
 }
 
-.header-container h2, .footer-container h2 {
+.header-container h2,
+.footer-container h2 {
     font-weight: 600;
     color: var(--off-white);
 }
 
-.header--logo, .footer--logo {
+.header--logo,
+.footer--logo {
     width: 50px;
 }
 
-.header--logo img, .footer--logo img {
+.header--logo img,
+.footer--logo img {
     width: 100%;
     height: 100%;
 }
@@ -76,7 +85,7 @@ hr{
     filter: brightness(50%);
 }
 
-.main-container-text{
+.main-container-text {
     color: var(--just-white);
     width: 100%;
     height: 100%;
@@ -87,19 +96,19 @@ hr{
     align-items: center;
 }
 
-.main-container-text h1{
+.main-container-text h1 {
     font-size: 2.6rem;
 }
 
-.main-container-text .banner-info{
+.main-container-text .banner-info {
     display: none;
 }
 
-.banner-button{
+.banner-button {
     margin-top: 16px;
 }
 
-.banner-button a{
+.banner-button a {
     text-decoration: none;
     font-size: 1.6rem;
     padding: 10px 15px;
@@ -111,34 +120,34 @@ hr{
     transition: 0.2s;
 }
 
-.banner-button a:hover{
+.banner-button a:hover {
     background-color: var(--just-white);
     color: var(--soft-black);
     transition: 0.2s;
 }
 
-.banner-login{
+.banner-login {
     display: inherit;
     margin-top: 16px;
     font-size: 1.6rem;
 }
 
-.banner-login p{
+.banner-login p {
     margin-left: 10px;
 }
 
-.banner-login a{
+.banner-login a {
     margin-left: 10px;
     font-weight: 600;
-    text-decoration: none;
-    color: var(--just-white);
-}
-
-.banner-login a:hover{
+    text-decoration: underline;
     color: var(--mustard);
 }
 
-.main-categories--slider{
+.banner-login a:hover {
+    color: var(--just-white);
+}
+
+.main-categories--slider {
     width: 90%;
     display: grid;
     /* grid-template-columns: repeat(auto-fit, 70px); */
@@ -148,10 +157,10 @@ hr{
     gap: 20px;
     justify-content: space-between;
     justify-items: center;
-    overflow-x: scroll;    
+    overflow-x: scroll;
 }
 
-.categories--item{
+.categories--item {
     width: 70px;
     height: 70px;
     display: flex;
@@ -160,10 +169,10 @@ hr{
     justify-content: center;
     text-align: center;
     background-color: var(--blue-grey);
-    border-radius: 100%;    
+    border-radius: 100%;
 }
 
-.categories-hr{
+.categories-hr {
     display: none;
 }
 
@@ -172,17 +181,17 @@ hr{
     margin: 0 auto;
 } */
 
-.food-detail--title h2{
+.food-detail--title h2 {
     font-size: 2.4rem;
     color: var(--soft-black);
 }
 
-.food-detail--title p{
+.food-detail--title p {
     font-size: 1.4rem;
     color: var(--warm-grey);
 }
 
-.food--container{
+.food--container {
     width: 90%;
     max-width: 1600px;
     margin: 0 auto;
@@ -193,7 +202,7 @@ hr{
     grid-auto-columns: 1fr;
 }
 
-.food-cards--container{
+.food-cards--container {
     width: 100%;
     display: grid;
     gap: 10px;
@@ -202,7 +211,7 @@ hr{
     overflow: scroll;
 }
 
-.food-detail--card{
+.food-detail--card {
     /* width: 85%;
     min-width: 300px;
     max-width: 350px; */
@@ -210,32 +219,31 @@ hr{
     border: solid 1px var(--soft-grey);
     border-radius: 10px;
     overflow: hidden;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
-.food--card-text{
+.food--card-text {
     padding: 10px;
 }
 
-.food--card-text h3{
+.food--card-text h3 {
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 5px;
     color: var(--soft-black);
 }
 
-.food--card-text p{
+.food--card-text p {
     font-size: 1.6rem;
     color: var(--grey);
 }
 
-
-.food-detail--card figure{
+.food-detail--card figure {
     width: 100%;
     height: 170px;
 }
 
-.food-detail--card figure img{
+.food-detail--card figure img {
     width: 100%;
     height: 100%;
     object-fit: cover;

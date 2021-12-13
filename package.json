@@ -1,0 +1,29 @@
+{
+  "name": "proyectokobi",
+  "version": "1.0.0",
+  "description": "Kobi is a web application to order food from informal food sellers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaroTand/Kobi-Project.git"
+  },
+  "keywords": [],
+  "author": "Jonathan Gutierrez <jegolvera@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LaroTand/Kobi-Project/issues"
+  },
+  "homepage": "https://github.com/LaroTand/Kobi-Project#readme",
+  "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "express": "^4.17.1",
+    "joi": "^17.5.0"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3"
+  }
+}
