@@ -4,19 +4,26 @@ const Joi = require('joi');
 const id = Joi.number().integer()
 const name = Joi.string().min(3).max(40)
 const status = Joi.boolean()
+const location = Joi.string().min(3).max(40)
 const image = Joi.string().uri()
-// const sellerId = Joi.number().integer()
-// const labelId = Joi.number().integer()
+const sellerId = Joi.number().integer()
+const labelId = Joi.number().integer()
 
 const createMenuSchema = Joi.object({
     name: name.required(),
-    image: image.required(),
+    status: status,
+    location: location.required(),
+    image: image.required(),    
+    sellerId: sellerId.required(),
+    labelId: labelId.required()
 })
 
 const updateMenuSchema = Joi.object({
     name: name,
     status: status,
+    location: location,
     image: image,
+    labelId: labelId,
 })
 
 const getMenuSchema = Joi.object({

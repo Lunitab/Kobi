@@ -2,16 +2,19 @@ const Joi = require("joi")
 
 // Formato de cada campo
 const id = Joi.number().integer()
-const name = Joi.string().max(20).required()
+const name = Joi.string().max(50).required()
+const image = Joi.string().uri()
+
 
 const createLabelSchema = Joi.object({
     id: id.required(),
     name: name.required(),
+    image: image.required()
 })
 
 const updateLabelSchema = Joi.object({
-    id: id.required(),
-    name: name.required(),
+    name: name,
+    image: image
 })
 
 const getLabelSchema = Joi.object({
