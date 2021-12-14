@@ -10,7 +10,9 @@ class SellerService {
     }
 
     async find() {
-        const sellers = await models.Seller.findAll()
+        const sellers = await models.Seller.findAll({
+            include: ["menu"]
+        })
         return sellers
     }
 

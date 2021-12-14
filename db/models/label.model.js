@@ -29,11 +29,12 @@ class Label extends Model {
     static associate(models) {
         this.hasMany(models.Menu, {
             as: "menus",
-            foreignKey: "label_id",
+            foreignKey: "labelId",
         })
+
         this.hasMany(models.Food, {
             as: "foods",
-            foreignKey: "label_id",
+            foreignKey: "labelId",
         })
     }
 

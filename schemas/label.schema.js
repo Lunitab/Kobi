@@ -7,7 +7,6 @@ const image = Joi.string().uri()
 
 
 const createLabelSchema = Joi.object({
-    id: id.required(),
     name: name.required(),
     image: image.required()
 })

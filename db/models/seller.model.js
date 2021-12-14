@@ -52,7 +52,7 @@ class Seller extends Model {
         return{
             sequelize,
             tableName: SELLER_TABLE,
-            modelName: SELLER_TABLE,
+            modelName: 'Seller',
             timestamps: false
         }
     }

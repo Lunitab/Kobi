@@ -5,17 +5,30 @@ const { models } = require("./../libs/sequelize")
 class MenuService {
 
     async create(data) {
-        const newMenu = await models.Menu.create(data)
+        const newSeller = await models.Seller.create(data.seller)
+        const newMenu = await models.Menu.create({
+            ...data,
+            sellerId: newSeller.id
+        })
         return newMenu
     }
 
     async find() {
-        const menus = await models.Menu.findAll()
+        const menus = await models.Menu.findAll({
+            include: ["seller", "label"]
+        })
         return menus
     }
 
     async findOne(id) {
-        const menu = await models.Menu.findByPk(id)
+        const menu = await models.Menu.findByPk(id, {
+            include: ["seller", "label",
+                {
+                    association: "categories",
+                    include: ["foods"],
+                }
+            ],
+        })
         return menu
     }
 

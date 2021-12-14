@@ -1,8 +1,8 @@
 
-const {Seller, SellerSchema} = require('./seller.model')
 const {Menu, MenuSchema} = require('./menu.model')
 const {Label, LabelSchema} = require('./label.model')
 const {Food, FoodSchema} = require('./food.model')
+const {Seller, SellerSchema} = require('./seller.model')
 const {Category, CategorySchema} = require('./category.model')
 
 function setupModels(sequelize){
@@ -13,6 +13,11 @@ function setupModels(sequelize){
     Category.init(CategorySchema, Category.config(sequelize))
 
     // Asociaciones
+    Seller.associate(sequelize.models)
+    Menu.associate(sequelize.models)
+    Label.associate(sequelize.models)
+    Food.associate(sequelize.models)
+    Category.associate(sequelize.models)
 }
 
 module.exports = setupModels;
