@@ -1,73 +1,33 @@
-const faker = require("faker")
 const boom = require("@hapi/boom")
 
+const { models } = require("./../libs/sequelize")
+
 class SellerService {
-    constructor() {
-        this.sellers = []
-        this.generate()
-    }
-
-    generate() {
-        const limit = 50
-
-        for (let index = 0; index < limit; index++) {
-            this.sellers.push({
-                id: faker.datatype.uuid(),
-                name: faker.name.firstName(),
-                username: faker.internet.userName(),
-                email: faker.internet.email(),
-                password: faker.internet.password(),
-            })
-        }
-    }
 
     async create(data) {
-        const newSeller = {
-            id: faker.datatype.uuid(),
-            ...data,
-        }
-        this.sellers.push(newSeller)
+        const newSeller = await models.Seller.create(data)
         return newSeller
     }
 
     async find() {
-        return this.sellers
+        const sellers = await models.Seller.findAll()
+        return sellers
     }
 
     async findOne(id) {
-        const user = this.sellers.find((item) => item.id === id)
-        if (!user) {
-            throw boom.notFound("sellers not found")
-        }
-
-        if (user.isBlocked) {
-            throw boom.conflict("sellers is block")
-        }
-
-        return user
+        const seller = await models.Seller.findByPk(id)
+        return seller
     }
 
     async update(id, changes) {
-        const index = this.sellers.findIndex((item) => item.id === id)
-        if (index === -1) {
-            throw boom.notFound("sellers not found")
-        }
-
-        const user = this.sellers[index]
-
-        this.sellers[index] = {
-            ...user,
-            ...changes,
-        }
-        return this.sellers[index]
+        const seller = await this.findOne(id)
+        const rta = await seller.update(changes)
+        return rta
     }
 
     async delete(id) {
-        const index = this.sellers.findIndex((item) => item.id === id)
-        if (index === -1) {
-            throw boom.notFound("sellers not found")
-        }
-        this.sellers.splice(index, 1)
+        const seller = await this.findOne(id)
+        await seller.destroy()
         return { id }
     }
 }

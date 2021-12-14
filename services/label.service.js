@@ -1,70 +1,33 @@
-const faker = require("faker")
 const boom = require("@hapi/boom")
 
+const { models } = require("./../libs/sequelize")
+
 class LabelService {
-    constructor() {
-        this.labels = []
-        this.generate()
-    }
-
-    generate() {
-        const limit = 50
-
-        for (let index = 0; index < limit; index++) {
-            this.labels.push({
-                id: faker.datatype.uuid(),
-                name: faker.commerce.department(),
-            })
-        }
-    }
 
     async create(data) {
-        const newLabel = {
-            id: faker.datatype.uuid(),
-            ...data,
-        }
-        this.labels.push(newLabel)
+        const newLabel = await models.Label.create(data)
         return newLabel
     }
 
     async find() {
-        return this.labels
+        const labels = await models.Label.findAll()
+        return labels
     }
 
     async findOne(id) {
-        const user = this.labels.find((item) => item.id === id)
-        if (!user) {
-            throw boom.notFound("labels not found")
-        }
-
-        if (user.isBlocked) {
-            throw boom.conflict("labels is block")
-        }
-
-        return user
+        const label = await models.Label.findByPk(id)
+        return label
     }
 
     async update(id, changes) {
-        const index = this.labels.findIndex((item) => item.id === id)
-        if (index === -1) {
-            throw boom.notFound("labels not found")
-        }
-
-        const user = this.labels[index]
-
-        this.labels[index] = {
-            ...user,
-            ...changes,
-        }
-        return this.labels[index]
+        const label = await this.findOne(id)
+        const rta = await label.update(changes)
+        return rta
     }
 
     async delete(id) {
-        const index = this.labels.findIndex((item) => item.id === id)
-        if (index === -1) {
-            throw boom.notFound("labels not found")
-        }
-        this.labels.splice(index, 1)
+        const label = await this.findOne(id)
+        await label.destroy()
         return { id }
     }
 }
