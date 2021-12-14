@@ -36,7 +36,7 @@ router.post("/", validatorHandler(createCategorySchema, "body"), async (req, res
     }
 })
 
-router.patch("/:id", validatorHandler(getCategorySchema, "params"), validatorHandler(updateCategorySchema, "body"), async (req, res, next) => {
+router.patch("/:id", validatorHandler(getCategorySchema, "params") ,validatorHandler(updateCategorySchema, "body"), async (req, res, next) => {
     try {
         const { id } = req.params
         const body = req.body
@@ -51,7 +51,7 @@ router.delete("/:id", validatorHandler(getCategorySchema, "params"), async (req,
     try {
         const { id } = req.params
         await service.delete(id)
-        res.status(201).json({ id })
+        res.status(204).json({ id })
     } catch (error) {
         next(error)
     }

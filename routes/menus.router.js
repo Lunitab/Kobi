@@ -26,6 +26,34 @@ router.get('/:id', validatorHandler(getMenuSchema, "params") ,async (req, res) =
     }
 })
 
+router.post('/', validatorHandler(createMenuSchema, "body"), async (req, res) => {
+    try {
+        const menu = await service.create(req.body);
+        res.status(201).json(menu);
+    } catch (err) {
+        next(err);
+    }
+})
 
+router.patch('/:id', validatorHandler(getMenuSchema, "params"), validatorHandler(updateMenuSchema, "body"), async (req, res) => {
+    try {
+        const {id} = req.params;
+        const body = req.body;
+        const menu = await service.update(id, body);
+        res.json(menu);
+    } catch (err) {
+        next(err);
+    }
+})
+
+router.delete('/:id', validatorHandler(getMenuSchema, "params"), async (req, res) => {
+    try {
+        const {id} = req.params;
+        await service.delete(id);
+        res.status(201).json({ id })
+    } catch (err) {
+        next(err);
+    }
+})
 
 module.exports = router;

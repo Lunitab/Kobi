@@ -22,8 +22,8 @@ const updateSellerSchema = Joi.object({
     phone: phone,
 })
 
-const getUserSchema = Joi.object({
+const getSellerSchema = Joi.object({
     id: id.required()
 })
 
-module.exports = { createSellerSchema, updateSellerSchema, getUserSchema }
+module.exports = { createSellerSchema, updateSellerSchema, getSellerSchema }
