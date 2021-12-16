@@ -6,8 +6,8 @@ const { createSellerSchema, updateSellerSchema } = require('./seller.schema');
 const id = Joi.number().integer()
 const name = Joi.string().min(3).max(40)
 const status = Joi.boolean()
-const location = Joi.string().min(3).max(40)
-const image = Joi.string().uri()
+const location = Joi.string().min(3)
+const image = Joi.string()
 // const sellerId = Joi.number().integer()
 const labelId = Joi.number().integer()
 

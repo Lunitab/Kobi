@@ -7,7 +7,7 @@ const { createSellerSchema, updateSellerSchema, getSellerSchema } = require("./.
 const router = express.Router()
 const service = new SellerService()
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
     try {
         const sellers = await service.find()
         res.json(sellers)
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     }
 })
 
-router.get("/:id", validatorHandler(getSellerSchema, "params"), async (req, res) => {
+router.get("/:id", validatorHandler(getSellerSchema, "params"), async (req, res, next) => {
     try {
         const { id } = req.params
         const seller = await service.findOne(id)
@@ -26,7 +26,7 @@ router.get("/:id", validatorHandler(getSellerSchema, "params"), async (req, res)
     }
 })
 
-router.post("/", validatorHandler(createSellerSchema, "body"), async (req, res) => {
+router.post("/", validatorHandler(createSellerSchema, "body"), async (req, res, next) => {
     try {
         const body = req.body
         const newSeller = await service.create(body)
@@ -36,7 +36,7 @@ router.post("/", validatorHandler(createSellerSchema, "body"), async (req, res) 
     }
 })
 
-router.patch("/:id", validatorHandler(getSellerSchema, "params"), validatorHandler(updateSellerSchema, "body"), async (req, res) => {
+router.patch("/:id", validatorHandler(getSellerSchema, "params"), validatorHandler(updateSellerSchema, "body"), async (req, res, next) => {
     try {
         const { id } = req.params
         const body = req.body
@@ -47,7 +47,7 @@ router.patch("/:id", validatorHandler(getSellerSchema, "params"), validatorHandl
     }
 })
 
-router.delete("/:id", validatorHandler(getSellerSchema, "params"), async (req, res) => {
+router.delete("/:id", validatorHandler(getSellerSchema, "params"), async (req, res, next) => {
     try {
         const { id } = req.params
         await service.delete(id)

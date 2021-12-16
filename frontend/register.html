@@ -33,7 +33,70 @@
                 <!-- <h1 class="main-title">Registrate</h1> -->
                 <section class="main-login">
                     <!-- <span class="main-login-text">Registra tus datos</span> -->
-                    <form action="#" method="POST" enctype="multipart/form-data" class="main-login-form">
+                    <form action="#" id="form1" class="main-login-form register seller">
+                        <h3>Datos Vendedor</h3>
+
+                        <label for="datos" class="register">
+                            <input name="name" type="text" placeholder="Nombre" required />
+                            <input name="nickname" type="text" placeholder="Nombre de usuario" required />
+                            <input name="email" type="email" placeholder="Email" required />
+                            <input name="telefono" type="tel" placeholder="Teléfono" required />
+                            <input name="password" id="password" type="password" placeholder="Contraseña" required />
+                            <input name="password-repeat" id="confirm_password" type="password" placeholder="Repita su contraseña" required />
+                        </label>
+
+                        <label for="botones" class="boton">
+                            <button type="button" id="next1" class="btn-primary">Siguiente</button>
+                        </label>
+                    </form>
+
+                    <form action="#" id="form2" class="main-login-form register location hidden">
+                        <h3>Dirección de su Tienda</h3>
+
+                        <label>
+                            <select name="country" id="showCountries" class="options-input input" required>
+                                <option value="" selected disabled hidden>País o región</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Bolivia">Bolivia</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="Costa Rica">Costa Rica</option>
+                                <option value="Cuba">Cuba</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="El Salvador">El Salvador</option>
+                                <option value="España">España</option>
+                                <option value="Estados Unidos">Estados Unidos</option>
+                                <option value="Guatemala">Guatemala</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="México">México</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Panamá">Panamá</option>
+                                <option value="Paraguay">Paraguay</option>
+                                <option value="Perú">Perú</option>
+                                <option value="Puerto Rico">Puerto Rico</option>
+                                <option value="República Dominicana">República Dominicana</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Venezuela">Venezuela</option>
+                            </select>
+                        </label>
+
+                        <label for="datos" class="register">
+                            <input name="state" type="text" placeholder="Estado" required />
+                            <input name="city" type="text" placeholder="Ciudad" required />
+                            <input name="location" type="text" placeholder="Dirección postal, apartado postal." required />
+                            <input name="cp" type="text" placeholder="Código Postal" required />
+                        </label>
+
+                        <label for="botones" class="boton">
+                            <button type="button" id="back1" class="btn-primary">Retroceder</button>
+                            <button type="button" id="next2" class="btn-primary">Siguiente</button>
+                        </label>
+                    </form>
+
+                    <form action="#" id="form3" class="main-login-form register menu hidden">
+                        <h3>Datos Tienda</h3>
+
                         <label for="ImageFile">
                             <div class="custom-file">
                                 <!-- <label class="image-label" for="ImageFile">Imagen de tu negocio</label> -->
@@ -45,60 +108,66 @@
                                     <img id="addImageIcon" src="./assets/img/plus-icon.png" alt="" width="100%" />
                                 </figure>
 
-                                <input name="imagen" type="file" class="file-input d-none" id="ImageFile" required />
+                                <input id="ImageFile" name="imagen" type="file" class="file-input hidden" accept=".png, .jpg, .jpeg" required />
                             </div>
                         </label>
 
-                        <label for="datos" class="datos">
-                            <input name="name" type="text" placeholder="Nombre" required />
-                            <input name="nickname" type="text" placeholder="Nombre de usuario" required />
+                        <label for="datos" class="register">
                             <input name="menu" type="text" placeholder="Nombre de tu tienda" required />
-                            <input name="email" type="email" placeholder="Email" required />
-                            <input name="telefono" type="tel" placeholder="Teléfono" required />
-                            <input name="password" id="password" type="password" placeholder="Contraseña" required />
-                            <input name="password-repeat" id="confirm_password" type="password" placeholder="Repite tu contraseña" required />
                         </label>
 
-                        <label for="terms" class="checkbox">
-                            <!-- Checkbox for terms -->
-                            <input type="checkbox" name="terms" id="terms" required />
-                            <span>Acepto los terminos y condiciones</span>
+                        <label>
+                            <select name="etiqueta" id="showLabels" class="options-input input" required>
+                                <option value="" selected disabled hidden>Seleccione etiqueta</option>
+
+                                <!-- Select labels from the Database -->
+                            </select>
                         </label>
+
+                        <!-- <label for="terms" class="checkbox"> -->
+                        <!-- Checkbox for terms -->
+                        <!-- <input type="checkbox" name="terms" id="terms" required /> -->
+                        <!-- <span>Acepto los terminos y condiciones</span> -->
+                        <!-- </label> -->
 
                         <label for="botones" class="boton">
-                            <input type="submit" class="submit" value="Registrarse" />
+                            <button type="button" id="back2" class="btn-primary">Retroceder</button>
+                            <input type="submit" class="btn-primary" value="Registrarse" />
                         </label>
                     </form>
                 </section>
             </section>
         </main>
-
-        <!-- <footer>
-        <div class="footer-container">
-            <a href="#" class="footer--logo">
-                <img src="./assets/img/logo1.png" alt="" />
-            </a>
-            <h2>Kobi</h2>
-        </div>
-    </footer> -->
     </body>
 
+    <!-- Sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- Script para previsualizar imagen -->
+    <!-- Script para previsualizar y verificar si es una imagen y cambiar el nombre del archivo -->
     <script>
         const $inputImage = document.getElementById("ImageFile")
         const $image = document.getElementById("foodImage")
 
         $inputImage.addEventListener("change", function () {
-            console.log(this.files)
-            var files = this.files
-            var imgCodified = URL.createObjectURL(files[0])
-
-            $image.setAttribute("src", imgCodified)
+            // Verificar si el archivo es una imagen
+            if (this.files[0] && this.files[0].type.match(/image.*/)) {
+                const reader = new FileReader()
+                reader.addEventListener(
+                    "load",
+                    () => {
+                        // Change image preview
+                        $image.src = reader.result
+                    },
+                    false
+                )
+                reader.readAsDataURL(this.files[0])
+            } else {
+                swal("Error!", "El archivo debe ser una imagen!", "error")
+            }
         })
     </script>
 
+    <!-- Script to validate the Password -->
     <script>
         const $password = document.getElementById("password"),
             $confirm_password = document.getElementById("confirm_password")
@@ -114,4 +183,108 @@
         password.onchange = validatePassword
         confirm_password.onkeyup = validatePassword
     </script>
+
+    <!-- Script to change to the next form with pure JS -->
+    <script>
+        const $next1 = document.getElementById("next1"),
+            $next2 = document.getElementById("next2"),
+            $back1 = document.getElementById("back1"),
+            $back2 = document.getElementById("back2"),
+            $form1 = document.getElementById("form1"),
+            $form2 = document.getElementById("form2"),
+            $form3 = document.getElementById("form3")
+
+        $next1.addEventListener("click", function () {
+            $form1.classList.add("hidden")
+            $form2.classList.remove("hidden")
+        })
+
+        $next2.addEventListener("click", function () {
+            $form2.classList.add("hidden")
+            $form3.classList.remove("hidden")
+        })
+
+        $back1.addEventListener("click", function () {
+            $form1.classList.remove("hidden")
+            $form2.classList.add("hidden")
+        })
+
+        $back2.addEventListener("click", function () {
+            $form2.classList.remove("hidden")
+            $form3.classList.add("hidden")
+        })
+    </script>
+
+    <!-- Script to send form data to the server-->
+    <script>
+        $form3.addEventListener("submit", async (event) => {
+            // Evitar que se recargue la pagina
+            event.preventDefault()
+
+            // Obtener los datos de cada formulario
+            const formData1 = new FormData($form1),
+                formData2 = new FormData($form2),
+                formData3 = new FormData($form3)
+
+            // Crear la direccion
+            const menuLocation = `${formData2.get("location")}, C.P. ${formData2.get("cp")} ${formData2.get("city")}, ${formData2.get("state")}, ${formData2.get("country")}`
+
+            // Generar el nuevo nombre de la imagen del menu
+            const newImageName = `${Date.now()}-menu.jpg`
+
+            // Cambiar el nombre al archivo
+            const file = formData3.get("imagen")
+            const blob = file.slice(0, file.size, "image/jpg")
+            const newImgFile = new File([blob], newImageName, { type: "image/jpg" })
+
+            // Agregar el nuevo nombre al formulario
+            formData3.delete("imagen")
+            formData3.append("menuImage", newImgFile)
+
+            const menuImgPath = `frontend/assets/img/img_menus/${newImageName}`
+
+            const menuData = JSON.stringify({
+                name: formData3.get("menu"),
+                location: menuLocation,
+                image: menuImgPath,
+                seller: {
+                    name: formData1.get("name"),
+                    username: formData1.get("nickname"),
+                    email: formData1.get("email"),
+                    phone: formData1.get("telefono"),
+                    password: formData1.get("password"),
+                },
+                labelId: parseInt(formData3.get("etiqueta")),
+            })
+
+            // Enviar los datos a la API
+            try {
+                const res = await fetch("./api/v1/menus", {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    method: "POST",
+                    body: menuData,
+                })
+            } catch (error) {
+                swal("Error!", "El menu no se ha registrado correctamente!", "error")
+            }
+
+            // Enviar la imagen al servidor
+            const resImg = await fetch("./api/v1/upload/menu", {
+                method: "POST",
+                body: formData3,
+            })
+
+            // Si no hay errores, redireccionar al usuario
+
+            swal("Registro exitoso!", "El menu se ha registrado correctamente!", "success")
+            
+            window.location.href = "./login.html"
+            
+        })
+    </script>
+
+    <!-- Import loadLabelsData script -->
+    <script src="./js/loadLabelsData.js"></script>
 </html>

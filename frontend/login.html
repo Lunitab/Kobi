@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/form.css" />
@@ -37,16 +38,24 @@
 
                 <form action="./menu.html" method="POST" class="main-login-form">
                     <label for="datos" class="datos">
-                        <input type="email" name="email" class="email-input" placeholder="Email" required />
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <input type="email" name="email" class="email-input" placeholder="Email" required />
+                        </div>
 
-                        <input type="password" name="password" class="pass-input" placeholder="Contraseña" required />
+                        <div>
+                            <i class="fa fa-lock"></i>
+                            <input type="password" name="password" class="pass-input" placeholder="Contraseña" required />
+                        </div>
                     </label>
+
+                    
                     <label for="botones" class="boton">
                         <!-- <div class="div-checkbox">
                             <input type="checkbox" class="checkbox">
                             <span><strong>Remember Me</strong></span>
                         </div> -->
-                        <input type="submit" class="submit" />
+                        <input type="submit" class="submit btn-primary" />
                     </label>
                 </form>
             </section>

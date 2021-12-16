@@ -7,7 +7,7 @@ const { createFoodSchema, updateFoodSchema, getFoodSchema } = require("./../sche
 const router = express.Router()
 const service = new FoodService()
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
     try {
         const foods = await service.find()
         res.json(foods)
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     }
 })
 
-router.get("/:id", validatorHandler(getFoodSchema, "params"), async (req, res) => {
+router.get("/:id", validatorHandler(getFoodSchema, "params"), async (req, res, next) => {
     try {
         const { id } = req.params
         const food = await service.findOne(id)
@@ -26,7 +26,7 @@ router.get("/:id", validatorHandler(getFoodSchema, "params"), async (req, res) =
     }
 })
 
-router.post("/", validatorHandler(createFoodSchema, "body"), async (req, res) => {
+router.post("/", validatorHandler(createFoodSchema, "body"), async (req, res, next) => {
     try {
         const newFood = await service.create(req.body)
         res.status(201).json(newFood)
@@ -35,7 +35,7 @@ router.post("/", validatorHandler(createFoodSchema, "body"), async (req, res) =>
     }
 })
 
-router.patch("/:id", validatorHandler(getFoodSchema, "params"), validatorHandler(updateFoodSchema, "body"), async (req, res) => {
+router.patch("/:id", validatorHandler(getFoodSchema, "params"), validatorHandler(updateFoodSchema, "body"), async (req, res, next) => {
     try {
         const { id } = req.params
         const body = req.body
@@ -46,7 +46,7 @@ router.patch("/:id", validatorHandler(getFoodSchema, "params"), validatorHandler
     }
 })
 
-router.delete("/:id", validatorHandler(getFoodSchema, "params"), async (req, res) => {
+router.delete("/:id", validatorHandler(getFoodSchema, "params"), async (req, res, next) => {
     try {
         const { id } = req.params
         const food = await service.delete(id)

@@ -7,7 +7,7 @@ const { createLabelSchema, updateLabelSchema, getLabelSchema } = require("./../s
 const router = express.Router()
 const service = new LabelService()
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
     try {
         const labels = await service.find()
         res.json(labels)
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     }
 })
 
-router.get("/:id", validatorHandler(getLabelSchema, "params"), async (req, res) => {
+router.get("/:id", validatorHandler(getLabelSchema, "params"), async (req, res, next) => {
     try {
         const { id } = req.params
         const label = await service.findOne(id)
@@ -26,7 +26,7 @@ router.get("/:id", validatorHandler(getLabelSchema, "params"), async (req, res) 
     }
 })
 
-router.post("/", validatorHandler(createLabelSchema, "body"), async (req, res) => {
+router.post("/", validatorHandler(createLabelSchema, "body"), async (req, res, next) => {
     try {
         const body = req.body
         const newLabel = await service.create(body)
@@ -36,7 +36,7 @@ router.post("/", validatorHandler(createLabelSchema, "body"), async (req, res) =
     }
 })
 
-router.patch("/:id", validatorHandler(getLabelSchema, "params"), validatorHandler(updateLabelSchema, "body"), async (req, res) => {
+router.patch("/:id", validatorHandler(getLabelSchema, "params"), validatorHandler(updateLabelSchema, "body"), async (req, res, next) => {
     try {
         const { id } = req.params
         const body = req.body
@@ -47,7 +47,7 @@ router.patch("/:id", validatorHandler(getLabelSchema, "params"), validatorHandle
     }
 })
 
-router.delete("/:id", validatorHandler(getLabelSchema, "params"), async (req, res) => {
+router.delete("/:id", validatorHandler(getLabelSchema, "params"), async (req, res, next) => {
     try {
         const { id } = req.params
         await service.delete(id)

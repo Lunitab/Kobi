@@ -7,7 +7,7 @@ const { createMenuSchema, updateMenuSchema, getMenuSchema } = require('./../sche
 const router = express.Router();
 const service = new MenuService();
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try {
         const menus = await service.find()
         res.json(menus);
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', validatorHandler(getMenuSchema, "params") ,async (req, res) => {
+router.get('/:id', validatorHandler(getMenuSchema, "params") ,async (req, res, next) => {
     try {
     const {id} = req.params;
     const menu = await service.findOne(id);
@@ -26,16 +26,16 @@ router.get('/:id', validatorHandler(getMenuSchema, "params") ,async (req, res) =
     }
 })
 
-router.post('/', validatorHandler(createMenuSchema, "body"), async (req, res) => {
+router.post('/', validatorHandler(createMenuSchema, "body"), async (req, res, next) => {
     try {
-        const menu = await service.create(req.body);
-        res.status(201).json(menu);
+        const newMenu = await service.create(req.body);
+        res.status(201).json(newMenu);
     } catch (err) {
         next(err);
     }
 })
 
-router.patch('/:id', validatorHandler(getMenuSchema, "params"), validatorHandler(updateMenuSchema, "body"), async (req, res) => {
+router.patch('/:id', validatorHandler(getMenuSchema, "params"), validatorHandler(updateMenuSchema, "body"), async (req, res, next) => {
     try {
         const {id} = req.params;
         const body = req.body;
@@ -46,7 +46,7 @@ router.patch('/:id', validatorHandler(getMenuSchema, "params"), validatorHandler
     }
 })
 
-router.delete('/:id', validatorHandler(getMenuSchema, "params"), async (req, res) => {
+router.delete('/:id', validatorHandler(getMenuSchema, "params"), async (req, res, next) => {
     try {
         const {id} = req.params;
         await service.delete(id);
