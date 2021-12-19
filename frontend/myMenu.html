@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- Metas -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/form.css" />
+        <link rel="stylesheet" href="./css/menu.css" />
+        <!-- Page -->
+        <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
+        <title>Kobi</title>
+    </head>
+
+    <body>
+        <main>
+            <img class="bg-img" src="./assets/img/food1.jpg" alt="bg-image" />
+            <section class="main">
+                <!-- <h1 class="main-title">Registrate</h1> -->
+                <section class="main-login">
+                    <form action="#" id="menu-form" class="main-login-form register menu">
+                        <h3 id="menu-name">
+                            <!-- Nombre de la tienda/menu -->
+                        </h3>
+
+                        <label for="ImageFile">
+                            <div class="custom-file">
+                                <figure class="upload-image">
+                                    <!-- Imagen del menu -->
+                                    <img id="menu-image" src="./assets/img/noUser.jpg" alt="" width="100%" />
+                                </figure>
+
+                                <figure class="upload-icon">
+                                    <!-- Imagen de editar -->
+                                    <img id="addImageIcon" src="./assets/img/plus-icon.png" alt="" width="100%" />
+                                </figure>
+
+                                <p class="menu-label" id="menu-label">
+                                    <!-- Etiqueta del menu -->
+                                </p>
+                                <input id="ImageFile" name="imagen" type="file" class="file-input d-none" accept=".png, .jpg, .jpeg" />
+                            </div>
+                        </label>
+
+                        <label for="Estado" class="status-label">
+                            <p class="menu-label menu-status">Estado: <b id="menu-status"></b></p>
+                            <select id="estado" name="estado" class="status-select options-input">
+                                <option value="" selected disabled hidden>Seleccionar estado</option>
+                                <option value="1">Abierto</option>
+                                <option value="0">Cerrado</option>
+                            </select>
+                        </label>
+
+                        <label for="category" class="categories" id="menu-categories">
+                            <!-- Crear category container por cada categoria del menu -->
+                        </label>
+
+                        <!-- Button to add a new category -->
+                        <button class="add-category-btn" type="button">Nueva Categoría</button>
+
+                        <label>
+                            <select name="etiqueta" id="showLabels" class="options-input input">
+                                <!-- Select labels from the Database -->
+                            </select>
+                        </label>
+
+                        <label for="botones" class="boton">
+                            <button type="button" id="back" class="btn-primary">Volver</button>
+                            <input type="submit" class="btn-primary" value="Guardar" />
+                        </label>
+                    </form>
+                </section>
+            </section>
+        </main>
+    </body>
+
+    <!-- Sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Script para previsualizar y verificar si es una imagen y cambiar el nombre del archivo -->
+    <script>
+        const $inputImage = document.getElementById("ImageFile")
+        const $image = document.getElementById("menu-image")
+
+        $inputImage.addEventListener("change", function () {
+            // Verificar si el archivo es una imagen
+            if (this.files[0] && this.files[0].type.match(/image.*/)) {
+                const reader = new FileReader()
+                reader.addEventListener(
+                    "load",
+                    () => {
+                        // Change image preview
+                        $image.src = reader.result
+                    },
+                    false
+                )
+                reader.readAsDataURL(this.files[0])
+            } else {
+                swal("Error!", "El archivo debe ser una imagen!", "error")
+            }
+        })
+    </script>
+
+    <!-- Script to get the menu id from the url -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search)
+        const menuId = urlParams.get("id")
+    </script>
+
+    <!-- Script to delete the category-container and food <li> when click delete-btn -->
+    <script>
+        const deletedCategoriesId = []
+
+        const deletedFoodsId = []
+
+        function loadDeleteButtons() {
+
+            // Delete category-container
+            const $deleteBtns = document.querySelectorAll(".delete-btn.delete-category")
+
+            $deleteBtns.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    swal("¿Esta seguro de eliminar la categoria?", "No se podrá recuperar", "warning")
+
+                    const $boton = document.querySelector(".swal-button")
+                    $boton.addEventListener("click", () => {
+                        const $categoryContainer = this.parentElement.parentElement
+                        $categoryContainer.remove()
+
+                        try {
+                            const categoryId = parseInt(btn.getAttribute("data-id"))
+                            deletedCategoriesId.push(categoryId)
+                        } catch (error) {
+                            console.log("No contiene id")
+                        }
+                    })
+                })
+            })
+
+            // Delete food <li>
+            const $deleteBtnsFood = document.querySelectorAll(".delete-btn.delete-food")
+
+            $deleteBtnsFood.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    swal("¿Esta seguro de eliminar el plato?", "No se podrá recuperar", "warning")
+
+                    const $boton = document.querySelector(".swal-button")
+                    $boton.addEventListener("click", () => {
+                        const $food = this.parentElement.parentElement
+                        $food.remove()
+
+                        try {
+                            const foodId = parseInt(btn.getAttribute("data-id"))
+                            deletedFoodsId.push(foodId)
+                        } catch (error) {
+                            console.log("No contiene id")
+                        }
+                    })
+                })
+            })
+        }
+    </script>
+
+    <!-- Script to redirect -->
+    <script>
+        function loadRedirectButtons() {
+            const $back = document.getElementById("back")
+            $back.addEventListener("click", () => (window.location.href = "./index.html"))
+
+            // Script to go to newFood.html
+            const $newFood = document.querySelectorAll(".add-food-btn")
+            $newFood.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const $categoryContainer = btn.parentElement
+                    const categoryId = $categoryContainer.getAttribute("data-id")
+                    window.location.href = `./newFood.html?menu=${menuId}&category=${categoryId}`
+                })
+            })
+
+            const $editFood = document.querySelectorAll(".edit")
+            $editFood.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const $categoryContainer = btn.parentElement.parentElement.parentElement.parentElement
+                    const categoryId = $categoryContainer.getAttribute("data-id")
+                    const foodId = btn.getAttribute("data-id")
+                    window.location.href = `./newFood.html?id=${foodId}&menu=${menuId}&category=${categoryId}`
+                })
+            })
+        }
+    </script>
+
+    <!-- Import loadLabelsData script -->
+    <script src="./js/loadLabelsData.js"></script>
+    <script src="./js/loadMenusData.js"></script>
+
+    <script>
+        // autoexecutable async function
+        ;(async function () {
+            // load labels data
+            await loadMenuDataInMyMenu(menuId)
+            loadDeleteButtons()
+            loadRedirectButtons()
+        })()
+    </script>
+
+    <!-- Script to load a new input when click on new category button -->
+    <script>
+        const $addCategoryBtn = document.querySelector(".add-category-btn")
+        const $categoryContainer = document.querySelector(".categories")
+
+        $addCategoryBtn.addEventListener("click", function () {
+            const $newCategory = document.createElement("div")
+            $newCategory.classList.add("category-container")
+
+            const $newCategoryEdit = document.createElement("div")
+            $newCategoryEdit.classList.add("category-edit")
+
+            const $newCategoryInput = document.createElement("input")
+            $newCategoryInput.classList.add("new-category")
+            $newCategoryInput.setAttribute("type", "text")
+            $newCategoryInput.setAttribute("name", "categoria")
+            $newCategoryInput.setAttribute("placeholder", "Nueva Categoría")
+
+            $newCategoryEdit.appendChild($newCategoryInput)
+
+            $newCategoryEdit.innerHTML += `
+                <a class="delete delete-btn delete-category" href="#" data-id="">
+                    <i class="fas fa-trash"></i>
+                </a>
+            `
+
+            $newCategory.appendChild($newCategoryEdit)
+
+            $newCategory.innerHTML += `
+            <ul class="food-list">                
+            </ul>
+            
+            <!-- Button to add a new food -->
+            <button class="add-food-btn" type="button">+</button>
+            `
+
+            $categoryContainer.appendChild($newCategory)
+
+            loadDeleteButtons()
+        })
+    </script>
+
+    <!-- Script to send form data to the server -->
+    <script>
+        const $form = document.getElementById("menu-form")
+
+        $form.addEventListener("submit", async (event) => {
+            // Evitar que se recargue la pagina
+            event.preventDefault()
+
+            const formData = new FormData($form)
+
+            let menuData = JSON.stringify({
+                // name: formData.get("menu"),
+                // location: menuLocation,
+                status: formData.get("estado") === "1" ? true : false,
+                labelId: parseInt(formData.get("etiqueta")),
+            })
+
+            // Cambiar el nombre al archivo solo si existe un nuevo archivo
+            const newImage = document.getElementById("ImageFile").files[0] ? true : false
+            let menuImgPath = false
+
+            if (newImage) {
+                const newImageName = `${Date.now()}-menu.jpg`
+
+                const file = formData.get("imagen")
+                const blob = file.slice(0, file.size, "image/jpg")
+                const newImgFile = new File([blob], newImageName, { type: "image/jpg" })
+                formData.delete("imagen")
+                formData.append("menuImage", newImgFile)
+
+                menuImgPath = `assets/img/img_menus/${newImageName}`
+
+                // Actualizar el nombre de la imagen en el menu
+                menuData = JSON.stringify({
+                    ...JSON.parse(menuData),
+                    image: menuImgPath,
+                })
+
+                // Enviar la imagen al servidor
+                const resImg = await fetch("./api/v1/upload/menu", {
+                    method: "POST",
+                    body: formData,
+                })
+            }
+
+            // Obtener todos los inputs de categorias
+            const $categoryInputs = document.querySelectorAll(".category")
+            const $newCategoryInputs = document.querySelectorAll(".new-category")
+
+            try {
+                // Send a PATCH request to the server
+                const menuResponse = await fetch(`./api/v1/menus/${menuId}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    method: "PATCH",
+                    body: menuData,
+                })
+
+                // Send a POST request for every new category
+                for (let i = 0; i < $newCategoryInputs.length; i++) {
+                    const newCategory = $newCategoryInputs[i].value
+                    const categoryData = JSON.stringify({
+                        name: newCategory,
+                        menuId: menuId,
+                    })
+
+                    const response = await fetch("/api/v1/categories", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: categoryData,
+                    })
+                }
+
+                // Send a PATCH for every category edited
+                for (let i = 0; i < $categoryInputs.length; i++) {
+                    const categoryId = $categoryInputs[i].getAttribute("data-id")
+                    const categoryName = $categoryInputs[i].value
+
+                    const categoryData = JSON.stringify({
+                        name: categoryName,
+                    })
+
+                    const response = await fetch(`/api/v1/categories/${categoryId}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: categoryData,
+                    })
+                }
+
+                // Send a DELETE request for every id in deletedCategoriesId
+                if (deletedCategoriesId.length > 0) {
+                    deletedCategoriesId.forEach(async (id) => {
+                        const response = await fetch(`/api/v1/categories/${id}`, {
+                            method: "DELETE",
+                        })
+                    })
+                }
+
+                // Send a DELETE request for every id in deletedFoodsId
+                if (deletedFoodsId.length > 0) {
+                    deletedFoodsId.forEach(async (id) => {
+                        const response = await fetch(`/api/v1/foods/${id}`, {
+                            method: "DELETE",
+                        })
+                    })
+                }
+                
+            } catch (error) {
+                swal("Error!", "No se han podido actualizar algunos datos!", "error")
+                return
+            }
+
+            swal("Guardado exitoso!", "El menu se ha actualizado correctamente!", "success")
+            // Refresh the page
+            setTimeout(() => {
+                window.location.reload()
+            }, 1500)
+        })
+    </script>
+</html>

@@ -109,6 +109,7 @@ main img.bg-img {
 }
 
 .main-login-form .datos input {
+    font-family: "Open Sans", sans-serif;
     height: 3.8rem;
     border: none;
     color: #666;
@@ -122,6 +123,7 @@ main img.bg-img {
 }
 
 .main-login-form .register input {
+    font-family: "Open Sans", sans-serif;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -239,6 +241,19 @@ form .options-input {
 
 .main-login-form.register {
     transition: all 0.5s linear;
+}
+
+.description {
+    height: 130px;
+    resize: none;
+    color: #666;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    margin-bottom: 16px;
+    background: #ffffff;
+    box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.08);
+    font-family: "Open Sans", sans-serif;
 }
 
 .hidden {

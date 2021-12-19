@@ -13,6 +13,10 @@ const LabelSchema = {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     image: {
         type: DataTypes.STRING,
         allowNull: false,

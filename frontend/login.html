@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <!-- Metas -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/form.css" />
+        <!-- Page -->
+        <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
+        <title>Kobi</title>
+    </head>
 
-<head>
-    <!-- Metas -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/form.css" />
-    <!-- Page -->
-    <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
-    <title>Kobi</title>
-</head>
-
-<body>
-    <!-- <header>
+    <body>
+        <!-- <header>
         <div class="header-container">
             <a href="./index.html" class="header--logo">
                 <img src="./assets/img/logo1.png" alt="" />
@@ -29,50 +28,79 @@
         </div>
     </header> -->
 
-    <main>
-        <img src="./assets/img/food1.jpg" class="bg-img" alt="bg-image">
-        <section class="main">
-            <h1 class="main-title">Login</h1>
-            <section class="main-login">
-                <span class="main-login-text">Ingresa para iniciar tu sesión</span>
+        <main>
+            <img src="./assets/img/food1.jpg" class="bg-img" alt="bg-image" />
+            <section class="main">
+                <h1 class="main-title">Login</h1>
+                <section class="main-login">
+                    <span class="main-login-text">Ingresa para iniciar tu sesión</span>
 
-                <form action="./menu.html" method="POST" class="main-login-form">
-                    <label for="datos" class="datos">
-                        <div>
-                            <i class="fa fa-envelope"></i>
-                            <input type="email" name="email" class="email-input" placeholder="Email" required />
-                        </div>
+                    <form action="./myMenu.html" class="main-login-form">
+                        <label for="datos" class="datos">
+                            <div>
+                                <i class="fa fa-envelope"></i>
+                                <input type="email" name="email" class="email-input" placeholder="Email" required />
+                            </div>
 
-                        <div>
-                            <i class="fa fa-lock"></i>
-                            <input type="password" name="password" class="pass-input" placeholder="Contraseña" required />
-                        </div>
-                    </label>
+                            <div>
+                                <i class="fa fa-lock"></i>
+                                <input type="password" name="password" class="pass-input" placeholder="Contraseña" required />
+                            </div>
+                        </label>
 
-                    
-                    <label for="botones" class="boton">
-                        <!-- <div class="div-checkbox">
+                        <label for="botones" class="boton">
+                            <!-- <div class="div-checkbox">
                             <input type="checkbox" class="checkbox">
                             <span><strong>Remember Me</strong></span>
                         </div> -->
-                        <input type="submit" class="submit btn-primary" />
-                    </label>
-                </form>
+                            <input type="submit" class="submit btn-primary" />
+                        </label>
+                    </form>
+                </section>
             </section>
-        </section>
-    </main>
+        </main>
 
-    <!-- <footer>
-        <div class="footer-container">
-            <a href="#" class="footer--logo">
-                <img src="./assets/img/logo1.png" alt="" />
-            </a>
-            <h2>Kobi</h2>
-        </div>
-    </footer> -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- Script para validar que el email y la contraseña coinciden en la base de datos  -->
+        <script>
+            async function check(email, password) {
+                const res = await fetch("./api/v1/sellers")
+                const sellers = await res.json()
 
-</body>
+                const seller = await sellers.find((seller) => seller.email === email && seller.password === password)
 
+                if (seller) {
+                    const menuId = await seller.menu.id
+                    return menuId
+                }
+
+                return false
+            }
+        </script>
+
+        <!-- Script para permitir acceder o no al usuario -->
+        <script>
+            // On submit
+            document.querySelector(".main-login-form").addEventListener("submit", async function (e) {
+                e.preventDefault()
+
+                // Get the values
+                const email = document.querySelector(".email-input").value
+                const password = document.querySelector(".pass-input").value
+
+                const menuId = await check(email, password)
+
+                if (menuId) {
+                    swal("Bienvenido", "Has iniciado sesión correctamente", "success")
+                    setTimeout(() => {
+                        window.location.href = `./myMenu.html?id=${menuId}`
+                    }, 1000)
+                    return true
+                }
+
+                swal("Error", "El email o la contraseña no coinciden", "error")
+            })
+        </script>
+    </body>
 </html>

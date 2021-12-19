@@ -1,206 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <!-- Metas -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/desktop.css" media="(min-width: 768px)" />
+        <!-- Page -->
+        <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
+        <title>Kobi</title>
+    </head>
 
-<head>
-    <!-- Metas -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/desktop.css" media="(min-width: 768px)" />
-    <!-- Page -->
-    <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
-    <title>Kobi</title>
-</head>
-
-<body>
-    <header>
-        <div class="header-container">
-            <a href="./index.html" class="header--logo">
-                <img src="./assets/img/logo1.png" alt="" />
-            </a>
-            <h2>¿Qué vamos a comer hoy?</h2>
-        </div>
-    </header>
-
-    <main>
-        <!-- Banner -->
-        <section class="main-banner">
-            <img class="banner-background" src="./assets/img/food1.jpg" alt="imagen burrito" />
-            <div class="main-container-text">
-                <h1>Kobi</h1>
-                <p class="banner-info">
-                    Kobi te permite vender variedad de alimentos distintos dentro de las instalaciones donde te encuentres, para tener un manejo completo de tus pedidos, quien
-                    te quiere comprar y mostrar lo que tienes por ofrecer.
-                </p>
-
-                <div class="banner-button">
-                    <a class="button" href="register.html">Quiero ser vendedor</a>
-                </div>
-
-                <div class="banner-login">
-                    <p>¿Ya eres vendedor?</p> <a href="login.html">Inicia sesión</a>
-                </div>
+    <body>
+        <header>
+            <div class="header-container">
+                <a href="./index.html" class="header--logo">
+                    <img src="./assets/img/logo1.png" alt="" />
+                </a>
+                <h2>¿Qué vamos a comer hoy?</h2>
             </div>
-        </section>
-        <!-- /Banner -->
+        </header>
 
-        <section class="main-categories--slider">
+        <main>
+            <!-- Banner -->
+            <section class="main-banner">
+                <img class="banner-background" src="./assets/img/food1.jpg" alt="imagen burrito" />
+                <div class="main-container-text">
+                    <h1>Kobi</h1>
+                    <p class="banner-info">
+                        Kobi te permite vender variedad de alimentos distintos dentro de las instalaciones donde te encuentres, para tener un manejo completo de tus pedidos, quien te quiere comprar y
+                        mostrar lo que tienes por ofrecer.
+                    </p>
 
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
-            <article class="categories--item">
-                <h4>Nombre etiqueta_id</h4>
-            </article>
+                    <div class="banner-button">
+                        <a class="button" href="register.html">Quiero ser vendedor</a>
+                    </div>
 
-        </section>
-
-        <hr class="categories-hr">
-
-        <section class="main-food-detail">
-            
-            <!-- Populares section -->
-            <section class="food--container">
-                <!-- Title -->
-                <div class="food-detail--title">
-                    <h2>Populares</h2>
-                    <p>Los más pedidos</p>
+                    <div class="banner-login">
+                        <p>¿Ya eres vendedor?</p>
+                        <a href="login.html">Inicia sesión</a>
+                    </div>
                 </div>
-                <!-- /Title -->
-
-                <!-- Menu cards -->
-                <section class="food-cards--container">
-
-                    <article class="food-detail--card">
-                        <a href="#">
-                            <figure>
-                                <img src="./assets/img/food1.jpg" alt="">
-                            </figure>
-                        </a>
-                        <div class="food--card-text">
-                            <h3>Nombre</h3>
-                            <p>Estatus</p>
-                        </div>
-                    </article>
-                    
-                    <article class="food-detail--card">
-                        <a href="#">
-                            <figure>
-                                <img src="./assets/img/food1.jpg" alt="">
-                            </figure>
-                        </a>
-                        <div class="food--card-text">
-                            <h3>Nombre</h3>
-                            <p>Estatus</p>
-                        </div>
-                    </article>
-
-                    <article class="food-detail--card">
-                        <a href="#">
-                            <figure>
-                                <img src="./assets/img/food1.jpg" alt="">
-                            </figure>
-                        </a>
-                        <div class="food--card-text">
-                            <h3>Nombre</h3>
-                            <p>Estatus</p>
-                        </div>
-                    </article>
-
-                </section>
-                <!-- /Item cards -->
             </section>
-            <!-- /Populares section -->
+            <!-- /Banner -->
 
-            <!-- Nuevos section -->
-            <section class="food--container">
-                <!-- Title -->
-                <div class="food-detail--title">
-                    <h2>Nuevos</h2>
-                    <p>Sé uno de los primeros en apoyarlos</p>
-                </div>
-                <!-- /Title -->
-
-                <!-- Item cards -->
-                <section class="food-cards--container">
-
-                    <article class="food-detail--card">
-                        <a href="">
-                            <figure>
-                                <img src="./assets/img/food2.jpg" alt="">
-                            </figure>
-                        </a>
-                        <div class="food--card-text">
-                            <h3>Nombre</h3>
-                            <p>Estatus</p>
-                        </div>
-                    </article>
-
-                    <article class="food-detail--card">
-                        <a href="">
-                            <figure>
-                                <img src="./assets/img/food2.jpg" alt="">
-                            </figure>
-                        </a>
-                        <div class="food--card-text">
-                            <h3>Nombre</h3>
-                            <p>Estatus</p>
-                        </div>
-                    </article>
-
-                    <article class="food-detail--card">
-                        <a href="">
-                            <figure>
-                                <img src="./assets/img/food2.jpg" alt="">
-                            </figure>
-                        </a>
-                        <div class="food--card-text">
-                            <h3>Nombre</h3>
-                            <p>Estatus</p>
-                        </div>
-                    </article>
-
-                </section>
-                <!-- /Item cards -->
+            <!-- Mostrar etiquetas -->
+            <section id="showLabels" class="main-categories--slider">
+                <!-- Traer etiquetas del servidor -->
             </section>
-            <!-- /Nuevos section -->
 
-        </section>
+            <hr class="categories-hr" />
 
-    </main>
+            <section id="labels" class="main-food-detail">
+                <!-- Nuevos section -->
+                <section class="food--container">
+                    <!-- Title -->
+                    <div class="food-detail--title">
+                        <h2>Nuevos</h2>
+                        <p>Sé uno de los primeros en apoyarlos</p>
+                    </div>
+                    <!-- /Title -->
 
-    <footer>
-        <div class="footer-container">
-            <a href="#" class="footer--logo">
-                <img src="./assets/img/logo1.png" alt="" />
-            </a>
-            <h2>Kobi</h2>
-        </div>
-    </footer>
-</body>
+                    <!-- Item cards -->
+                    <section id="newest" class="food-cards--container"></section>
+                    <!-- /Item cards -->
+                </section>
+                <!-- /Nuevos section -->
+            </section>
+        </main>
 
+        <footer>
+            <div class="footer-container">
+                <a href="#" class="footer--logo">
+                    <img src="./assets/img/logo1.png" alt="" />
+                </a>
+                <h2>Kobi</h2>
+            </div>
+        </footer>
+    </body>
+
+    <!-- Import loadData scripts -->
+    <script src="./js/loadLabelsData.js"></script>
+    <script src="./js/loadMenusData.js"></script>
+
+    <script>
+        // autoexecutable async function
+        ;(async function () {
+            await loadLabelsInSection()
+            await loadNewestMenusCard()
+            await loadLabelsSections()
+        })()
+    </script>
+
+    <!-- Script to make darker every menu with status 'cerrado' -->
+    <script></script>
 </html>

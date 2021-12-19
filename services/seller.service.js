@@ -17,7 +17,9 @@ class SellerService {
     }
 
     async findOne(id) {
-        const seller = await models.Seller.findByPk(id)
+        const seller = await models.Seller.findByPk(id, {
+            include: ["menu"]
+        })
         return seller
     }
 

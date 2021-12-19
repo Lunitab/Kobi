@@ -18,15 +18,6 @@
     </head>
 
     <body>
-        <!-- <header>
-        <div class="header-container">
-            <a href="./index.html" class="header--logo">
-                <img src="./assets/img/logo1.png" alt="" />
-            </a>
-            <h2>¿Qué vamos a comer hoy?</h2>
-        </div>
-    </header> -->
-
         <main>
             <img class="bg-img" src="./assets/img/food1.jpg" alt="bg-image" />
             <section class="main">
@@ -184,7 +175,7 @@
         confirm_password.onkeyup = validatePassword
     </script>
 
-    <!-- Script to change to the next form with pure JS -->
+    <!-- Script to change to the next form -->
     <script>
         const $next1 = document.getElementById("next1"),
             $next2 = document.getElementById("next2"),
@@ -241,7 +232,7 @@
             formData3.delete("imagen")
             formData3.append("menuImage", newImgFile)
 
-            const menuImgPath = `frontend/assets/img/img_menus/${newImageName}`
+            const menuImgPath = `assets/img/img_menus/${newImageName}`
 
             const menuData = JSON.stringify({
                 name: formData3.get("menu"),
@@ -268,6 +259,7 @@
                 })
             } catch (error) {
                 swal("Error!", "El menu no se ha registrado correctamente!", "error")
+                return
             }
 
             // Enviar la imagen al servidor
@@ -277,14 +269,21 @@
             })
 
             // Si no hay errores, redireccionar al usuario
-
             swal("Registro exitoso!", "El menu se ha registrado correctamente!", "success")
-            
-            window.location.href = "./login.html"
-            
+            setTimeout(() => {
+                window.location.href = "./login.html"
+            }, 1500)
         })
     </script>
 
     <!-- Import loadLabelsData script -->
     <script src="./js/loadLabelsData.js"></script>
+
+    <script>
+        // autoexecutable async function
+        ;(async function () {
+            // load labels data
+            await loadLabelsInForm()
+        })()
+    </script>
 </html>

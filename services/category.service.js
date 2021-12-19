@@ -26,7 +26,7 @@ class CategoryService {
     }
 
     async delete(id) {
-        const category = this.findOne(id)
+        const category = await this.findOne(id)
         await category.destroy()
         return {id}
     }
