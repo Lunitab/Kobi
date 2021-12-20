@@ -195,8 +195,10 @@ $RECYCLE.BIN/
 .vscode
 
 # Images
-frontend/assets/img/img*/*.jpg
-frontend/assets/img/img*/*.png
+frontend/assets/img/img_foods/*.jpg
+frontend/assets/img/img_foods/*.png
+frontend/assets/img/img_menus/*.jpg
+frontend/assets/img/img_menus/*.png
 
 docker-compose.yml
 
