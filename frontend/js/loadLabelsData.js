@@ -12,7 +12,19 @@ async function loadLabelsInForm() {
     const labels = await getLabels()
     
     const $select = document.getElementById("showLabels")
-    labels.forEach(label => {
+
+    // Order labels by name
+    const sortedLabels = labels.sort((a, b) => {
+        if (a.name < b.name) {
+            return -1
+        }
+        if (a.name > b.name) {
+            return 1
+        }
+        return 0
+    })
+
+    sortedLabels.forEach(label => {
         const option = document.createElement("option")
         option.value = label.id
         option.innerText = label.name

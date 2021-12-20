@@ -192,6 +192,7 @@
 
 .food--card-text p {
     color: var(--soft-grey);
+    margin-bottom: 5px;
 }
 
 .food-detail--card {

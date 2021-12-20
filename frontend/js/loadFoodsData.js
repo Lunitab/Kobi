@@ -60,10 +60,19 @@ async function loadInNewFood(foodId) {
     const $foodDescription = document.querySelector(".description")
     const $foodImage = document.getElementById("foodImage")
 
+    const $menuStatusAvailable = document.getElementById("status-available")
+    const $menuStatusUnavailable = document.getElementById("status-unavailable")
+
     $foodName.value = food.name
     $foodPrice.value = food.price
     $foodDescription.value = food.description
     $foodImage.src = food.image
+
+    if (food.status) {
+        $menuStatusAvailable.selected = true
+    } else {
+        $menuStatusUnavailable.selected = true
+    }
 
     await loadLabelsInPatchForm(food.labelId)
 

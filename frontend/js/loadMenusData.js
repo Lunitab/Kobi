@@ -19,7 +19,7 @@ function createMenuCard(menu) {
 
     let estado = "Cerrado"
     let menuLink = `<a href="menu.html?id=${menu.id}">`
-    
+
     // Add a class depending on status
     if (menu.status) {
         estado = "Abierto"
@@ -132,17 +132,25 @@ async function loadMenuDataInMyMenu(menuId) {
     const $menuStatus = document.getElementById("menu-status")
     const $menuCategories = document.getElementById("menu-categories")
 
+    const $menuStatusOpen = document.getElementById("status-open")
+    const $menuStatusClosed = document.getElementById("status-closed")
+
     $menuName.value = menu.name
     $menuImage.src = menu.image
     $menuLabel.innerHTML = menu.label.name
     $menuStatus.innerHTML = menu.status ? "Abierto" : "Cerrado"
     $menuStatus.className = menu.status ? "abierto" : "cerrado"
 
+    if (menu.status) {
+        $menuStatusOpen.selected = true
+    } else {
+        $menuStatusClosed.selected = true
+        
+    }
+
     await loadLabelsInPatchForm(menu.labelId)
 
-
     menu.categories.forEach((category) => {
-
         const $category = document.createElement("div")
         $category.className = "category-container"
         $category.setAttribute("data-id", category.id)
@@ -158,7 +166,7 @@ async function loadMenuDataInMyMenu(menuId) {
         category.foods.forEach((food) => {
             const $food = document.createElement("li")
             $food.innerHTML = `
-                    <p>${food.name}</p>
+                    <p class=${food.status ? "" : "cerrado"}>${food.name}</p>
                     <div class="food-actions">
                         <a class="edit" data-id="${food.id}">
                             <i class="fas fa-pen"></i>
@@ -207,5 +215,4 @@ async function loadMenuData(menuId) {
     const categories = await menu.categories
     await loadCategoriesInSection(categories)
     await loadCategoriesSections(categories)
-    
 }
