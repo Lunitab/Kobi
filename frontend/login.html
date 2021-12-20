@@ -53,7 +53,9 @@
                             <input type="checkbox" class="checkbox">
                             <span><strong>Remember Me</strong></span>
                         </div> -->
-                            <input type="submit" class="submit btn-primary" />
+                            <button type="button" id="back" class="btn-primary">Volver</button>
+
+                            <input type="submit" class="submit btn-primary" value="Iniciar Sesión" />
                         </label>
                     </form>
                 </section>
@@ -79,6 +81,12 @@
 
                 return false
             }
+        </script>
+
+        <!-- Script para regresar -->
+        <script>
+            const $back = document.getElementById("back")
+            $back.addEventListener("click", () => (window.location.href = "./index.html"))
         </script>
 
         <!-- Script para permitir acceder o no al usuario -->

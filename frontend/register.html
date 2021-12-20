@@ -37,6 +37,8 @@
                         </label>
 
                         <label for="botones" class="boton">
+                            <button type="button" id="back" class="btn-primary">Volver</button>
+
                             <button type="button" id="next1" class="btn-primary">Siguiente</button>
                         </label>
                     </form>
@@ -175,6 +177,12 @@
 
         password.onchange = validatePassword
         confirm_password.onkeyup = validatePassword
+    </script>
+
+    <!-- Script para regresar -->
+    <script>
+        const $back = document.getElementById("back")
+        $back.addEventListener("click", () => (window.location.href = "./index.html"))
     </script>
 
     <!-- Script to change to the next form -->
