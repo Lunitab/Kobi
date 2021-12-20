@@ -7,6 +7,10 @@
     padding: 0 200px;
 }
 
+.main-container-text.menu-container-info{
+    align-items: center;
+}
+
 .main-container-text .banner-info {
     display: block;
     width: 400px;

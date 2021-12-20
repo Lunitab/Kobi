@@ -1,7 +1,7 @@
 :root {
     /* Colores */
     --soft-black: #212529;
-    --cold-black: #1A1B1A;
+    --cold-black: #1a1b1a;
     --warm-grey: #474747;
     --grey: #717070;
     --soft-grey: #dddddd;
@@ -175,6 +175,8 @@ hr {
 }
 
 .categories--item p {
+    width: 65px;
+    overflow-wrap: break-word;
     position: absolute;
     font-size: 1.3rem;
     text-decoration: underline;
@@ -279,7 +281,7 @@ hr {
     align-items: center;
 }
 
-.closed figure p{
+.closed figure p {
     position: absolute;
     font-size: 1.7rem;
     font-weight: 400;
@@ -291,10 +293,10 @@ hr {
     background-color: var(--soft-black);
 }
 
-.closed img{
+.closed img {
     filter: brightness(70%);
 }
 
-.open figure p{
+.open figure p {
     display: none;
 }

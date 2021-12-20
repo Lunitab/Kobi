@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- Metas -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/desktop.css" media="(min-width: 768px)" />
+        <link rel="stylesheet" href="./css/menu.css" />
+        <!-- Page -->
+        <link rel="icon" type="image/png" href="./assets/img/logo1.png" />
+        <title>Kobi</title>
+    </head>
+
+    <body class="menu-body">
+
+        <main>
+            <!-- Banner -->
+            <section class="main-banner">
+                <!-- Menu Image -->
+                <img id="menu-image" class="banner-background" src="./assets/img/food1.jpg" alt="imagen burrito" />
+                <div class="main-container-text menu-container-info">
+                    <h1 id="menu-name">Menu Name</h1>
+
+                    <div class="banner-login menu-info">
+                        <p>Información del negocio</p>
+                        <!-- Phone number -->
+                        <a id="seller-phone" href="tel:+526777888999">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <!-- Address -->
+                        <a id="menu-location" href="https://www.google.com/maps/place/">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Ubicación
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+            <!-- /Banner -->
+
+            <!-- Mostrar categorias -->
+            <section id="showCategories" class="main-categories--slider">
+                <!-- Traer categorias del servidor -->
+            </section>
+
+            <hr class="categories-hr" />
+
+            <section id="categories" class="main-food-detail">
+                <!-- Traer categorias del servidor -->
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <a href="index.html" class="footer--logo">
+                    <img src="./assets/img/logo1.png" alt="" />
+                </a>
+                <h2>Kobi</h2>
+            </div>
+        </footer>
+    </body>
+
+    <!-- Script to get the menu id from the url -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search)
+        const menuId = urlParams.get("id")
+    </script>
+
+    <!-- Import loadData scripts -->
+    <script src="./js/loadLabelsData.js"></script>
+    <script src="./js/loadCategoriesData.js"></script>
+    <script src="./js/loadFoodsData.js"></script>
+    <script src="./js/loadMenusData.js"></script>
+
+    <script>
+        // autoexecutable async function
+        ;(async function () {
+            await loadMenuData(menuId);
+        })()
+    </script>
+
+    
+</html>

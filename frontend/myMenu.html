@@ -26,9 +26,10 @@
                 <!-- <h1 class="main-title">Registrate</h1> -->
                 <section class="main-login">
                     <form action="#" id="menu-form" class="main-login-form register menu">
-                        <h3 id="menu-name">
-                            <!-- Nombre de la tienda/menu -->
-                        </h3>
+
+                        <label for="menu-name">
+                            <input id="menu-name" name="menu-name" class="category menu-title" type="text" required />
+                        </label>
 
                         <label for="ImageFile">
                             <div class="custom-file">
@@ -121,7 +122,6 @@
         const deletedFoodsId = []
 
         function loadDeleteButtons() {
-
             // Delete category-container
             const $deleteBtns = document.querySelectorAll(".delete-btn.delete-category")
 
@@ -263,8 +263,8 @@
             const formData = new FormData($form)
 
             let menuData = JSON.stringify({
-                // name: formData.get("menu"),
                 // location: menuLocation,
+                name: formData.get("menu-name"),
                 status: formData.get("estado") === "1" ? true : false,
                 labelId: parseInt(formData.get("etiqueta")),
             })
@@ -363,7 +363,6 @@
                         })
                     })
                 }
-                
             } catch (error) {
                 swal("Error!", "No se han podido actualizar algunos datos!", "error")
                 return

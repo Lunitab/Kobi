@@ -31,7 +31,7 @@ function createMenuCard(menu) {
     }
 
     $card.innerHTML = `
-        <a href="#">
+        <a href="menu.html?id=${menu.id}">
         <figure>
             <img src="${menu.image}" alt="${menu.name}">
             <p>Cerrado</p>
@@ -91,6 +91,40 @@ async function loadLabelsSections() {
     })
 }
 
+// Load categories sections and menu cards only for categories with at least one menu
+async function loadCategoriesSections(categories) {
+    const $categories = document.getElementById("categories")
+
+    // Sort the categories by the latest
+    categories = categories.sort((a, b) => a.id - b.id)
+
+    categories.forEach((category) => {
+        if (category.foods.length <= 0) {
+            return false
+        }
+
+        const $section = document.createElement("section")
+        $section.className = "food--container"
+        $section.id = `category-${category.id}`
+
+        $section.innerHTML = `
+                    <!-- Title -->
+                    <div class="food-detail--title">
+                        <h2>${category.name}</h2>
+                    </div>
+                    <!-- /Title -->
+
+                    <!-- Menu cards -->
+                    <section class="food-cards--container">
+                        ${category.foods.map((menu) => createFoodCard(menu).outerHTML).join("")}
+                    </section>
+                    <!-- /Item cards -->
+        `
+        $categories.appendChild($section)
+    })
+}
+
+// Load the menu data for myMenu (edit menu)
 async function loadMenuDataInMyMenu(menuId) {
     const menu = await getMenu(menuId)
     const $menuName = document.getElementById("menu-name")
@@ -99,7 +133,7 @@ async function loadMenuDataInMyMenu(menuId) {
     const $menuStatus = document.getElementById("menu-status")
     const $menuCategories = document.getElementById("menu-categories")
 
-    $menuName.innerHTML = menu.name
+    $menuName.value = menu.name
     $menuImage.src = menu.image
     $menuLabel.innerHTML = menu.label.name
     $menuStatus.innerHTML = menu.status ? "Abierto" : "Cerrado"
@@ -154,4 +188,25 @@ async function loadMenuDataInMyMenu(menuId) {
 
         $menuCategories.appendChild($category)
     })
+}
+
+// Load Menu Data in each menu
+async function loadMenuData(menuId) {
+    const menu = await getMenu(menuId)
+
+    const $menuName = document.getElementById("menu-name")
+    const $menuImage = document.getElementById("menu-image")
+    const $sellerPhone = document.getElementById("seller-phone")
+    const $menuLocation = document.getElementById("menu-location")
+
+    $menuName.innerHTML = menu.name
+    $menuImage.src = menu.image
+    $sellerPhone.innerHTML += menu.seller.phone
+    $sellerPhone.href = `tel:${menu.seller.phone}`
+    $menuLocation.href = `https://www.google.com/maps/place/${menu.location}`
+
+    const categories = await menu.categories
+    await loadCategoriesInSection(categories)
+    await loadCategoriesSections(categories)
+    
 }
