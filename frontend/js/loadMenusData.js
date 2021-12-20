@@ -1,13 +1,13 @@
 // Load menus data
 async function getMenus() {
-    const res = await fetch("./api/v1/menus")
+    const res = await fetch(`${APIconnection}/menus`)
     const data = await res.json()
     return data
 }
 
 // Load just one menu
 async function getMenu(id) {
-    const res = await fetch(`./api/v1/menus/${id}`)
+    const res = await fetch(`${APIconnection}/menus/${id}`)
     const data = await res.json()
     return data
 }
@@ -18,20 +18,19 @@ function createMenuCard(menu) {
     $card.className = "food-detail--card"
 
     let estado = "Cerrado"
-
-    if (menu.status) {
-        estado = "Abierto"
-    }
-
+    let menuLink = `<a href="menu.html?id=${menu.id}">`
+    
     // Add a class depending on status
     if (menu.status) {
+        estado = "Abierto"
         $card.classList.add("open")
     } else {
         $card.classList.add("closed")
+        menuLink = `<a>`
     }
 
     $card.innerHTML = `
-        <a href="menu.html?id=${menu.id}">
+        ${menuLink}
         <figure>
             <img src="${menu.image}" alt="${menu.name}">
             <p>Cerrado</p>
@@ -60,7 +59,7 @@ async function loadNewestMenusCard() {
 }
 
 // Load labels sections and menu cards only for labels with at least one menu
-async function loadLabelsSections() {
+async function menuLoadLabelsSections() {
     const labels = await getLabels()
     const $labels = document.getElementById("labels")
 
@@ -174,7 +173,7 @@ async function loadMenuDataInMyMenu(menuId) {
 
         $category.innerHTML = `
             <div class="category-edit">
-                <input name="category-${category.id}" data-id="${category.id}" class="category" type="text" value="${category.name}" required />
+                <input name="category-${category.id}" data-id="${category.id}" class="category" type="text" value="${category.name}" minlength="3" maxlength="15" required />
                 <!-- Solo añadir el icono si no es el primero -->
                 ${category.id === menu.categories[0].id ? "" : deleteCategoryBtn}
             </div>

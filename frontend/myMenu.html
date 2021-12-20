@@ -28,7 +28,7 @@
                     <form action="#" id="menu-form" class="main-login-form register menu">
 
                         <label for="menu-name">
-                            <input id="menu-name" name="menu-name" class="category menu-title" type="text" required />
+                            <input id="menu-name" name="menu-name" class="menu-title" type="text" required />
                         </label>
 
                         <label for="ImageFile">
@@ -82,6 +82,8 @@
         </main>
     </body>
 
+    <script src="./js/connection.js"></script>
+
     <!-- Sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -112,7 +114,7 @@
     <!-- Script to get the menu id from the url -->
     <script>
         const urlParams = new URLSearchParams(window.location.search)
-        const menuId = urlParams.get("id")
+        const menuId = parseInt(urlParams.get("id"))
     </script>
 
     <!-- Script to delete the category-container and food <li> when click delete-btn -->
@@ -227,6 +229,12 @@
             $newCategoryInput.setAttribute("type", "text")
             $newCategoryInput.setAttribute("name", "categoria")
             $newCategoryInput.setAttribute("placeholder", "Nueva Categoría")
+            // Set limits to the input
+            $newCategoryInput.setAttribute("minlength", "3")
+            $newCategoryInput.setAttribute("maxlength", "15")
+            // Required
+            $newCategoryInput.setAttribute("required", "")
+            
 
             $newCategoryEdit.appendChild($newCategoryInput)
 
@@ -291,7 +299,7 @@
                 })
 
                 // Enviar la imagen al servidor
-                const resImg = await fetch("./api/v1/upload/menu", {
+                const resImg = await fetch(`${APIconnection}/upload/menu`, {
                     method: "POST",
                     body: formData,
                 })
@@ -303,7 +311,7 @@
 
             try {
                 // Send a PATCH request to the server
-                const menuResponse = await fetch(`./api/v1/menus/${menuId}`, {
+                const menuResponse = await fetch(`${APIconnection}/menus/${menuId}`, {
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -316,7 +324,7 @@
                     const newCategory = $newCategoryInputs[i].value
                     const categoryData = JSON.stringify({
                         name: newCategory,
-                        menuId: menuId,
+                        menuId: parseInt(menuId),
                     })
 
                     const response = await fetch("/api/v1/categories", {
@@ -330,7 +338,7 @@
 
                 // Send a PATCH for every category edited
                 for (let i = 0; i < $categoryInputs.length; i++) {
-                    const categoryId = $categoryInputs[i].getAttribute("data-id")
+                    const categoryId = parseInt($categoryInputs[i].getAttribute("data-id"))
                     const categoryName = $categoryInputs[i].value
 
                     const categoryData = JSON.stringify({

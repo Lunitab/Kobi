@@ -34,8 +34,8 @@
                 <div class="main-container-text">
                     <h1>Kobi</h1>
                     <p class="banner-info">
-                        Kobi te permite vender variedad de alimentos distintos dentro de las instalaciones donde te encuentres, para tener un manejo completo de tus pedidos, quien te quiere comprar y
-                        mostrar lo que tienes por ofrecer.
+                        Kobi es una página que te permite vender variedad de alimentos distintos donde sea que te encuentres de una manera rápida y sencilla, te ayuda a mostrar lo que tienes por
+                        ofrecer y mantener a tus clientes actualizados sobre tu negocio.
                     </p>
 
                     <div class="banner-button">
@@ -86,6 +86,7 @@
     </body>
 
     <!-- Import loadData scripts -->
+    <script src="./js/connection.js"></script>
     <script src="./js/loadLabelsData.js"></script>
     <script src="./js/loadMenusData.js"></script>
 
@@ -94,8 +95,7 @@
         ;(async function () {
             await loadLabelsInSection()
             await loadNewestMenusCard()
-            await loadLabelsSections()
+            await menuLoadLabelsSections()
         })()
     </script>
-
 </html>

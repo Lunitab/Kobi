@@ -10,6 +10,7 @@ const location = Joi.string().min(3)
 const image = Joi.string()
 // const sellerId = Joi.number().integer()
 const labelId = Joi.number().integer()
+const categoryName = Joi.string().min(3).max(15)
 
 const createMenuSchema = Joi.object({
     name: name.required(),
@@ -17,7 +18,10 @@ const createMenuSchema = Joi.object({
     location: location.required(),
     image: image.required(),    
     seller: createSellerSchema.required(),
-    labelId: labelId.required()
+    labelId: labelId.required(),
+    category: Joi.object({
+        name: categoryName.required(),
+    }).required(),
 })
 
 const updateMenuSchema = Joi.object({

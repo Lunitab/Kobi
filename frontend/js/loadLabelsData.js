@@ -1,7 +1,7 @@
 
 // Load labels data
 async function getLabels() {
-    const res = await fetch("./api/v1/labels")
+    const res = await fetch(`${APIconnection}/labels`)
     const data = await res.json()
     return data
 }

@@ -60,12 +60,14 @@
             </section>
         </main>
 
+        <script src="./js/connection.js"></script>
+
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <!-- Script para validar que el email y la contraseña coinciden en la base de datos  -->
         <script>
             async function check(email, password) {
-                const res = await fetch("./api/v1/sellers")
+                const res = await fetch(`${APIconnection}/sellers`)
                 const sellers = await res.json()
 
                 const seller = await sellers.find((seller) => seller.email === email && seller.password === password)

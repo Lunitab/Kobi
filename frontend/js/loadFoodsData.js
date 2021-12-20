@@ -1,13 +1,13 @@
 // Load foods data
 async function getFoods() {
-    const res = await fetch("./api/v1/foods")
+    const res = await fetch(`${APIconnection}/foods`)
     const data = await res.json()
     return data
 }
 
 // Load just one food
 async function getFood(id) {
-    const res = await fetch(`./api/v1/foods/${id}`)
+    const res = await fetch(`${APIconnection}/foods/${id}`)
     const data = await res.json()
     return data
 }

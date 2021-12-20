@@ -10,7 +10,7 @@ class LabelService {
     }
 
     async find() {
-        const labels = await models.Label.findAll({include:['menus']})
+        const labels = await models.Label.findAll({include:['menus', 'foods']})
         return labels
     }
 

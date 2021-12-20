@@ -29,11 +29,11 @@
 
                         <label for="datos" class="register">
                             <input name="name" type="text" placeholder="Nombre" required />
-                            <input name="nickname" type="text" placeholder="Nombre de usuario" required />
+                            <input name="nickname" type="text" placeholder="Nombre de usuario" minlength="3" maxlength="15" required />
                             <input name="email" type="email" placeholder="Email" required />
-                            <input name="telefono" type="tel" placeholder="Teléfono" required />
+                            <input name="telefono" type="tel" placeholder="Teléfono" minlength="9" maxlength="20" required />
                             <input name="password" id="password" type="password" placeholder="Contraseña" required />
-                            <input name="password-repeat" id="confirm_password" type="password" placeholder="Repita su contraseña" required />
+                            <input name="password-repeat" id="confirm_password" type="password" placeholder="Repita su contraseña" minlength="8" required />
                         </label>
 
                         <label for="botones" class="boton">
@@ -104,7 +104,7 @@
                         </label>
 
                         <label for="datos" class="register">
-                            <input name="menu" type="text" placeholder="Nombre de tu tienda" required />
+                            <input name="menu" type="text" placeholder="Nombre de tu tienda" minlength="3" maxlength="40" required />
                         </label>
 
                         <label>
@@ -130,6 +130,8 @@
             </section>
         </main>
     </body>
+
+    <script src="./js/connection.js"></script>
 
     <!-- Sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -186,13 +188,23 @@
             $form3 = document.getElementById("form3")
 
         $next1.addEventListener("click", function () {
-            $form1.classList.add("hidden")
-            $form2.classList.remove("hidden")
+            if ($form1.checkValidity()) {
+                $form1.classList.add("hidden")
+                $form2.classList.remove("hidden")
+                return
+            }
+            // Tell why the form is not valid
+            $form1.reportValidity()
         })
 
         $next2.addEventListener("click", function () {
-            $form2.classList.add("hidden")
-            $form3.classList.remove("hidden")
+            if ($form2.checkValidity()) {
+                $form2.classList.add("hidden")
+                $form3.classList.remove("hidden")
+                return
+            }
+            // Tell why the form is not valid
+            $form2.reportValidity()
         })
 
         $back1.addEventListener("click", function () {
@@ -246,11 +258,14 @@
                     password: formData1.get("password"),
                 },
                 labelId: parseInt(formData3.get("etiqueta")),
+                category: {
+                    name: "Categoria-1",
+                },
             })
 
             // Enviar los datos a la API
             try {
-                const res = await fetch("./api/v1/menus", {
+                const res = await fetch(`${APIconnection}/menus`, {
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -263,7 +278,7 @@
             }
 
             // Enviar la imagen al servidor
-            const resImg = await fetch("./api/v1/upload/menu", {
+            const resImg = await fetch(`${APIconnection}/upload/menu`, {
                 method: "POST",
                 body: formData3,
             })

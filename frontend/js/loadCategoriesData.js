@@ -1,6 +1,6 @@
 // Load labels data
 async function getCategories() {
-    const res = await fetch("./api/v1/categories")
+    const res = await fetch(`${APIconnection}/categories`)
     const data = await res.json()
     return data
 }
